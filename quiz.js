@@ -73,8 +73,50 @@ function displayQuestion() {
         quizContainer.appendChild(questionElement);
 
         const answerList = document.getElementById("answerList");
+        answerList.addEventListener("click", handleAnswer);
     }
 }
+
+function handleAnswer(event) {
+    if (isAnsweringAllowed && event.target.tagName === "LI") {
+        const selectedAnswer = event.target.textContent;
+        const correctAnswer = questions[currentQuestionIndex].correct_answer;
+
+        const isCorrect = selectedAnswer === correctAnswer;
+        const feedbackMessage = isCorrect
+            ? "Correct!"
+            : `Incorrect. The correct answer is: ${correctAnswer}`;
+        displayFeedback(feedbackMessage);
+        // Update the user's score
+        if (isCorrect) {
+            userScore++;
+        }
+    }
+}
+
+function displayFeedback(message) {
+    const feedbackElement = document.createElement("p");
+    feedbackElement.textContent = message;
+    feedbackElement.style.color = "black"; // Set font color to black for visibility
+
+    // Clear the existing feedback elements
+    quizContainer.innerHTML = "";
+
+    // Append the new feedback element
+    quizContainer.appendChild(feedbackElement);
+
+    // Delay the removal of the feedback element until the next question is displayed
+    setTimeout(() => {
+        feedbackElement.remove();
+
+        // Move to the next question or end the quiz after removing the feedback
+        currentQuestionIndex++;
+        if (currentQuestionIndex < 10) {
+            displayQuestion();
+        }
+    }, 3000); // Adjust the delay as needed
+}
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
