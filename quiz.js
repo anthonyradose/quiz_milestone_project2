@@ -4,7 +4,9 @@ let userScore = 0;
 let isAnsweringAllowed = false; // Flag to control answering during question loading
 const quizContainer = document.getElementById("quizContainer");
 const startButton = document.getElementById("startButton");
+const quitButton = document.getElementById("quitButton");
 startButton.addEventListener("click", startGame);
+quitButton.addEventListener("click", quitGame);
 
 function startGame() {
     console.log("startGame function is being executed."); // Add this line
@@ -134,4 +136,12 @@ function endGame() {
     quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10.</p>`;
     startButton.textContent = "Play Again";
     startGame();
+}
+
+function quitGame() {
+    currentQuestionIndex = 0;
+    questions = null;
+    userScore = 0;
+    isAnsweringAllowed = false;
+    quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
 }
