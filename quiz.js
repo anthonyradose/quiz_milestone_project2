@@ -114,6 +114,9 @@ function displayFeedback(message) {
         if (currentQuestionIndex < 10) {
             displayQuestion();
         }
+        else {
+            endGame();
+        }
     }, 3000); // Adjust the delay as needed
 }
 
@@ -124,4 +127,11 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+
+function endGame() {
+    quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10.</p>`;
+    startButton.textContent = "Play Again";
+    startGame();
 }
