@@ -5,18 +5,33 @@ let isAnsweringAllowed = false; // Flag to control answering during question loa
 const quizContainer = document.getElementById("quizContainer");
 const startButton = document.getElementById("startButton");
 const quitButton = document.getElementById("quitButton");
+const categorySelect = document.getElementById("category");
+const difficultySelect = document.getElementById("difficulty");
 startButton.addEventListener("click", startGame);
 quitButton.addEventListener("click", quitGame);
+quitButton.style.display = "none";
 
 function startGame() {
-    console.log("startGame function is being executed."); // Add this line
-    // Check if the game is already in progress
-    if (isAnsweringAllowed) {
-        // If the game is in progress, reset the game state
-        currentQuestionIndex = 0;
-        questions = null;
+    console.log("startGame function is being executed.");
+
+    // Reset the game state
+    currentQuestionIndex = 0;
+    questions = null;
+    userScore = 0;
+    isAnsweringAllowed = false;
+    startButton.style.display = "none";
+
+    // Get selected category and difficulty
+    const selectedCategory = categorySelect.value;
+    const selectedDifficulty = difficultySelect.value;
+
+    // Check if the user has made a selection
+    if (selectedCategory !== "" && selectedDifficulty !== "") {
+        // Construct the API URL with the selected category and difficulty
+        let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
+        console.log(apiUrl);
         userScore = 0;
-        isAnsweringAllowed = false;
+
         const answerList = document.getElementById("answerList");
         if (answerList) {
             answerList.innerHTML = ""; // Clear answer options
@@ -26,10 +41,13 @@ function startGame() {
         isAnsweringAllowed = false; // Set answering flag to false during question loading
 
         fetchQuestions(apiUrl);
+        console.log(apiUrl);
     } else {
         let apiUrl = "https://opentdb.com/api.php?amount=10";
+
         fetchQuestions(apiUrl);
     }
+    quitButton.style.display = "block";
 }
 
 const fetchQuestions = (apiUrl) => {
@@ -62,7 +80,10 @@ function displayQuestion() {
         // Check if answering is allowed before displaying the question
         const question = questions[currentQuestionIndex];
         const questionElement = document.createElement("div");
+        // Display selected category and difficulty if available
+        const categoryDifficultyText = `<p>Category: ${question.category}, Difficulty: ${question.difficulty}</p>`;
         questionElement.innerHTML = `
+    ${categoryDifficultyText}
 
       <p>${question.question}</p>
       <ul id="answerList">
@@ -85,6 +106,7 @@ function handleAnswer(event) {
         const correctAnswer = questions[currentQuestionIndex].correct_answer;
 
         const isCorrect = selectedAnswer === correctAnswer;
+
         const feedbackMessage = isCorrect
             ? "Correct!"
             : `Incorrect. The correct answer is: ${correctAnswer}`;
@@ -115,13 +137,24 @@ function displayFeedback(message) {
         currentQuestionIndex++;
         if (currentQuestionIndex < 10) {
             displayQuestion();
-        }
-        else {
+        } else {
             endGame();
         }
     }, 3000); // Adjust the delay as needed
 }
 
+function endGame() {
+    quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10.</p>`;
+    startButton.textContent = "Play Again";
+    startButton.style.display = "block";
+    startButton.addEventListener("click", () => {
+        // Reset current question index
+        currentQuestionIndex = 0;
+        // Reset the category dropdown to its default state
+        categorySelect.value = "";
+        startGame();
+    });
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -131,17 +164,12 @@ function shuffleArray(array) {
     return array;
 }
 
-
-function endGame() {
-    quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10.</p>`;
-    startButton.textContent = "Play Again";
-    startGame();
-}
-
 function quitGame() {
+    // Reset the game state and display a message
     currentQuestionIndex = 0;
     questions = null;
     userScore = 0;
     isAnsweringAllowed = false;
+    startButton.style.display = "block";
     quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
 }
