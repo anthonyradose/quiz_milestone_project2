@@ -14,15 +14,22 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body class="bg-light">
-    <div class="container mt-4">
+  <!-- Landing Page -->
+  <div id="landingPage" class="container mt-4 text-center">
+    <h1 class="text-primary">Welcome to the Quiz</h1>
+    <p>Get ready to test your knowledge. Click the button below to start the quiz!</p>
+    <button class="btn btn-primary" id="startButtonLanding">Start Quiz</button>
+  </div>
+  <!-- Quiz Section -->
+    <div class="container mt-4 hidden" id="quizSection">
       <div class="text-center">
         <h1 class="text-primary">Quiz</h1>
       </div>
       <!-- Category Dropdown -->
-      <div class="form-group">
+      <div class="form-group" id="categoryContainer">
         <label for="category">Select Category:</label>
         <select class="form-control" id="category">
-          <option value="" selected disabled>--Choose a Category--</option>
+          <option value="any" selected disabled>--Any Category--</option>
           <option value="9">General Knowledge</option>
           <option value="10">Books</option>
           <option value="12">Music</option>
@@ -49,10 +56,10 @@
         </select>
       </div>
       <!-- Difficulty Dropdown -->
-      <div class="form-group">
+      <div class="form-group" id="difficultyContainer">
         <label for="difficulty">Select Difficulty:</label>
         <select class="form-control" id="difficulty">
-          <option value="" selected disabled>--Select Difficulty--</option>
+          <option value="any" selected disabled>--Any Difficulty--</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>

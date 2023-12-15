@@ -9,14 +9,21 @@ const categorySelect = document.getElementById("category");
 const difficultySelect = document.getElementById("difficulty");
 const loader = document.getElementById("loader");
 const progressBar = document.getElementById("progressBar");
-
 startButton.addEventListener("click", startGame);
 quitButton.addEventListener("click", quitGame);
+const startButtonLanding = document.getElementById("startButtonLanding");
+const landingPage = document.getElementById("landingPage");
+const quizSection = document.getElementById("quizSection");
+
+startButtonLanding.addEventListener("click", () => {
+    landingPage.style.display = "none";
+    quizSection.style.display = "block";
+});
 quitButton.style.display = "none";
 
 function startGame() {
-    console.log("startGame function is being executed.");
-
+    document.getElementById("categoryContainer").style.display = "none";
+    document.getElementById("difficultyContainer").style.display = "none";
     // Reset the game state
     currentQuestionIndex = 0;
     questions = null;
@@ -30,11 +37,13 @@ function startGame() {
     const selectedCategory = categorySelect.value;
     const selectedDifficulty = difficultySelect.value;
 
+    categorySelect.disabled = true;
+    difficultySelect.disabled = true;
+
     // Check if the user has made a selection
-    if (selectedCategory !== "" && selectedDifficulty !== "") {
+    if (selectedCategory !== "any" && selectedDifficulty !== "any") {
         // Construct the API URL with the selected category and difficulty
         let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
-        console.log(apiUrl);
         userScore = 0;
         progressBar.value = 0;
         const answerList = document.getElementById("answerList");
@@ -46,7 +55,7 @@ function startGame() {
         isAnsweringAllowed = false; // Set answering flag to false during question loading
 
         fetchQuestions(apiUrl);
-        console.log(apiUrl);
+
     } else {
         let apiUrl = "https://opentdb.com/api.php?amount=10";
 
@@ -156,8 +165,12 @@ function endGame() {
     startButton.addEventListener("click", () => {
         // Reset current question index
         currentQuestionIndex = 0;
+        // Enable the dropdowns after the game ends or the user quits
+        categorySelect.disabled = false;
+        difficultySelect.disabled = false;
         // Reset the category dropdown to its default state
-        categorySelect.value = "";
+        categorySelect.value = "any";
+        difficultySelect.value = "any";
         startGame();
     });
 }
@@ -171,6 +184,9 @@ function shuffleArray(array) {
 }
 
 function quitGame() {
+    // Show the dropdowns after the user quits
+    document.getElementById("categoryContainer").style.display = "block";
+    document.getElementById("difficultyContainer").style.display = "block";
     // Reset the game state and display a message
     currentQuestionIndex = 0;
     questions = null;
@@ -179,4 +195,9 @@ function quitGame() {
     isAnsweringAllowed = false;
     startButton.style.display = "block";
     quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
+    // Enable the dropdowns after the game ends or the user quits
+    categorySelect.disabled = false;
+    difficultySelect.disabled = false;
+    categorySelect.value = "any";
+    difficultySelect.value = "any";
 }
