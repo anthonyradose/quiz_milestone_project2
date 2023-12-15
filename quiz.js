@@ -38,6 +38,7 @@ function initializeGameState() {
   categorySelect.disabled = false;
   difficultySelect.disabled = false;
   playAgainButton.style.display = "none";
+  quizContainer.innerHTML = "";
 }
 
 function startGame() {
@@ -57,7 +58,7 @@ function startGame() {
   // Check if the user has made a selection
   if (selectedCategory !== "any" && selectedDifficulty !== "any") {
     // Construct the API URL with the selected category and difficulty
-    let apiUrl = `https://opentdb.com/api.php?amount=2&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
+    let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
     userScore = 0;
     progressBar.value = 0;
     const answerList = document.getElementById("answerList");
@@ -70,7 +71,7 @@ function startGame() {
 
     fetchQuestions(apiUrl);
   } else {
-    let apiUrl = "https://opentdb.com/api.php?amount=2";
+    let apiUrl = "https://opentdb.com/api.php?amount=10";
 
     fetchQuestions(apiUrl);
   }
@@ -163,16 +164,16 @@ function displayFeedback(message) {
 
     // Move to the next question or end the quiz after removing the feedback
     currentQuestionIndex++;
-    if (currentQuestionIndex < 2) {
+    if (currentQuestionIndex < 10) {
       displayQuestion();
     } else {
       endGame();
     }
-  }, 1000); // Adjust the delay as needed
+  }, 3000); // Adjust the delay as needed
 }
 
 function endGame() {
-  quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/2.</p>`;
+  quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10.</p>`;
   progressBar.style.display = "none";
   playAgainButton.style.display = "block";
 }
@@ -191,5 +192,5 @@ function quitGame() {
   setTimeout(() => {
     quizContainer.innerHTML = "";
     initializeGameState();
-  }, 2000);
+  }, 3000);
 }
