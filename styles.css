@@ -1,7 +1,72 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: ghostwhite;
+}
+#landingPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.logo-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.logo-link {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+.logo-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.p-description:nth-of-type(odd) {
+  font-size: 1.3em;
+}
+
+.p-description {
+  color: rgb(63, 89, 125);
+}
+.p-description:nth-of-type(even) {
+  font-size: 1.1em;
+}
+#startButtonLanding {
+  font-size: 1em;
+  background: rgb(93, 116, 138);
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  color: white;
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+.logo-link {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo-link:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 #loader {
-    display: none;
+  display: none;
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+h1 {
+  color: rgb(63, 89, 125);
+}
+#startButtonLanding:hover {
+  background-color: rgb(53, 79, 115);
+}
+#startButtonLanding:active {
+  transform: translateY(2px);
 }

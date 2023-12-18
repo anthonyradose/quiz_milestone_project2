@@ -39,6 +39,7 @@ function initializeGameState() {
   difficultySelect.disabled = false;
   playAgainButton.style.display = "none";
   quizContainer.innerHTML = "";
+  quizContainer.style.display = "none";
 }
 
 function startGame() {
@@ -47,7 +48,7 @@ function startGame() {
   startButton.style.display = "none";
   progressBar.style.display = "block";
   loader.style.display = "block";
-
+  quizContainer.style.display = "block";
   // Get selected category and difficulty
   const selectedCategory = categorySelect.value;
   const selectedDifficulty = difficultySelect.value;
