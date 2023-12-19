@@ -93,6 +93,7 @@ h1 {
   color: ghostwhite;
   border: none;
   transition: transform 0.2s ease-in-out;
+  display: none;
 }
 #quitButton:hover {
   background-color: rgb(93, 116, 138);
