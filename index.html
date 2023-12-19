@@ -28,7 +28,7 @@
   <body>
     <!-- Landing Page -->
     <div id="landingPage" class="container mt-4 text-center">
-      <div class="logo-div">
+      <div class="logo-div m-3">
         <a class="logo-link">
           <div class="logo-div">
             <!-- Logo SVG -->
@@ -88,17 +88,25 @@
           </div>
         </a>
 
-        <h1 class="display-1">uizko</h1>
+        <h1 class="display-1">uizWorld</h1>
       </div>
-      <p class="p-description">Welcome to Quiz!</p>
-      <p class="p-description">
-        Test your knowledge on a variety of topics!
-      </p>
-      <button class="btn" id="startButtonLanding">PLAY!</button>
+      <p class="p-subheading m-3">Welcome to QuizWorld!</p>
+      <div id="p-description-div" class="p-3 m-3">
+        <p class="p-description">
+          Explore a world of quizzes that range from General Knowledge to Anime
+          & Manga! 
+          <p class="p-description">This app offers a fun and interactive way to test your
+          expertise or discover new interests with each engaging question!</p>
+          <p class="p-description">Embark on your quiz journey today!</p>
+        </p>
+      </div>
+      <button class="btn m-3" id="startButtonLanding">PLAY!</button>
     </div>
     <!-- Quiz Section -->
     <div class="container mt-4 hidden" id="quizSection">
-      <div class="logo-div">
+      <div class="logo-div m-3">
+
+
         <a class="logo-link" href="index.html">
           <div class="logo-div">
             <!-- Logo SVG -->
@@ -157,10 +165,11 @@
             </svg>
           </div>
         </a>
-        <h1 class="display-1">uizko</h1>
+        <h1 class="display-1">uizWorld</h1>
       </div>
       <!-- Category Dropdown -->
       <div class="form-group" id="categoryContainer">
+ 
         <label for="category">Select Category:</label>
         <select class="form-control" id="category">
           <option value="any" selected disabled>--Any Category--</option>
@@ -191,6 +200,7 @@
       </div>
       <!-- Difficulty Dropdown -->
       <div class="form-group" id="difficultyContainer">
+  
         <label for="difficulty">Select Difficulty:</label>
         <select class="form-control" id="difficulty">
           <option value="any" selected disabled>--Any Difficulty--</option>

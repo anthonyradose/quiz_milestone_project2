@@ -21,14 +21,19 @@ body {
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
-.p-description:nth-of-type(odd) {
+.p-subheading {
   font-size: 1.3em;
+  color: rgb(33, 89, 125);
 }
 
-.p-description {
-  color: rgb(63, 89, 125);
+#p-description-div {
+  color: ghostwhite;
+  border-radius: 4px;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  background-color: rgb(93, 116, 138);
+  width: 70%;
 }
-.p-description:nth-of-type(even) {
+.p-description{
   font-size: 1.1em;
 }
 
