@@ -1,3 +1,66 @@
+// Initialize Choices.js with the class name
+const categoryDropdown = new Choices("#category", {
+  searchEnabled: false,
+  itemSelectText: "",
+  classNames: {
+    containerInner: "custom-dropdown",
+    containerOuter: "custom-choices",
+    input: "choices__input",
+    inputCloned: "choices__input--cloned",
+    list: "choices__list",
+    listItems: "choices__list--multiple",
+    listSingle: "choices__list--single",
+    listDropdown: "choices__list--dropdown",
+    item: "option-el",
+    itemSelectable: "choices__item--selectable",
+    itemDisabled: "choices__item--disabled",
+    itemOption: "choices__item--choice",
+    group: "choices__group",
+    groupHeading: "choices__heading",
+    button: "choices__button",
+    activeState: "is-active",
+    focusState: "is-focused",
+    openState: "is-open",
+    disabledState: "is-disabled",
+    highlightedState: "is-highlighted",
+    selectedState: "is-selected",
+    flippedState: "is-flipped",
+    selectedState: "is-highlighted",
+  },
+  allowHTML: true,
+});
+
+const difficultyDropdown = new Choices("#difficulty", {
+  searchEnabled: false,
+  itemSelectText: "",
+  classNames: {
+    containerInner: "custom-dropdown",
+    containerOuter: "custom-choices",
+    input: "choices__input",
+    inputCloned: "choices__input--cloned",
+    list: "choices__list",
+    listItems: "choices__list--multiple",
+    listSingle: "choices__list--single",
+    listDropdown: "choices__list--dropdown",
+    item: "option-el",
+    itemSelectable: "choices__item--selectable",
+    itemDisabled: "choices__item--disabled",
+    itemOption: "choices__item--choice",
+    group: "choices__group",
+    groupHeading: "choices__heading",
+    button: "choices__button",
+    activeState: "is-active",
+    focusState: "is-focused",
+    openState: "is-open",
+    disabledState: "is-disabled",
+    highlightedState: "is-highlighted",
+    selectedState: "is-selected",
+    flippedState: "is-flipped",
+    selectedState: "is-highlighted",
+  },
+  allowHTML: true,
+});
+
 let currentQuestionIndex;
 let questions;
 let userScore;
@@ -19,7 +82,7 @@ const quizSection = document.getElementById("quizSection");
 
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
-  quizSection.style.display = "block";
+  quizSection.style.display = "flex";
   initializeGameState();
 });
 progressBar.style.display = "none";

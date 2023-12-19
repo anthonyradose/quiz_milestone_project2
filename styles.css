@@ -3,7 +3,7 @@ body {
   background-color: ghostwhite;
 }
 #landingPage {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -21,12 +21,6 @@ body {
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
-.logo-div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
 .p-description:nth-of-type(odd) {
   font-size: 1.3em;
 }
@@ -37,17 +31,20 @@ body {
 .p-description:nth-of-type(even) {
   font-size: 1.1em;
 }
+
 #startButtonLanding {
   font-size: 1em;
-  background: rgb(93, 116, 138);
+  background: orange;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: white;
+  color: rgb(63, 89, 125);
   transition: transform 0.2s ease-in-out;
   border: none;
 }
-.logo-link {
-  display: inline-block;
-  transition: transform 0.3s ease-in-out;
+#startButtonLanding:hover {
+  background-color: darkorange;
+}
+#startButtonLanding:active {
+  box-shadow: -1px 0px 0px 1px rgb(63, 89, 125);
 }
 
 .logo-link:hover {
@@ -64,9 +61,65 @@ body {
 h1 {
   color: rgb(63, 89, 125);
 }
-#startButtonLanding:hover {
-  background-color: rgb(53, 79, 115);
+
+#quizSection {
+  height: 90vh;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
-#startButtonLanding:active {
-  transform: translateY(2px);
+#startButton {
+  font-size: 1em;
+  background: orange;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  color: rgb(63, 89, 125);
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+#startButton:hover {
+  background-color: darkorange;
+}
+#startButton:active {
+  box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
+}
+#quitButton {
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  background-color: rgb(63, 89, 125);
+  color: ghostwhite;
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+#quitButton:hover {
+  background-color: rgb(93, 116, 138);
+}
+#quitButton:active {
+  box-shadow: -1px 0px 0px 1px rgb(33, 89, 125);
+}
+
+#categoryContainer,
+#difficultyContainer {
+  min-width: 350px;
+  position: relative;
+}
+
+.custom-choices {
+  background-color: lightblue;
+}
+
+.custom-dropdown {
+  background-color: lightblue;
+  border-radius: 8px;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+}
+
+.choices .choices__list .option-el {
+  background-color: lightblue;
+}
+
+.custom-choices.is-open .choices__list .option-el,
+.custom-choices.is-open .choices__list .option-el:focus {
+  background-color: lightblue;
+}
+.custom-choices.is-open .choices__list .option-el:hover {
+  background-color: rgb(183, 229, 70);
 }
