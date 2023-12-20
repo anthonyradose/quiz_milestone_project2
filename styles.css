@@ -100,6 +100,20 @@ h1 {
 #startButton:active {
   box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
 }
+#playAgainButton{
+  font-size: 1em;
+  background: orange;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  color: rgb(63, 89, 125);
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+#playAgainButton:active{
+  box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
+}
+#playAgainButton:hover{
+  background-color: darkorange;
+}
 #quitButton {
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
   background-color: rgb(63, 89, 125);
@@ -184,3 +198,11 @@ padding: 1rem
   border-radius : 4px;
   padding: 1rem;
 }
+
+
+/* Extra small	None	<576px
+Small	sm	≥576px
+Medium	md	≥768px
+Large	lg	≥992px
+Extra large	xl	≥1200px
+Extra extra large	xxl	≥1400px */

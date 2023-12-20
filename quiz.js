@@ -117,6 +117,7 @@ function initializeGameState() {
   categorySelect.disabled = false;
   difficultySelect.disabled = false;
   playAgainButton.style.display = "none";
+  quitButton.style.display="none"
   quizContainer.innerHTML = "";
   quizContainer.style.display = "none";
 }
@@ -125,7 +126,7 @@ function startGame() {
   document.getElementById("categoryContainer").style.display = "none";
   document.getElementById("difficultyContainer").style.display = "none";
   startButton.style.display = "none";
-progressBar.style.display = "block";
+  progressBar.style.display = "block";
   loader.style.display = "block";
   quizContainer.style.display = "block";
   quizContainer.style.backgroundColor = "transparent";
@@ -261,7 +262,7 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
 function displayQuestion() {
 
   if (isAnsweringAllowed) {
-    
+
     // Check if answering is allowed before displaying the question
     const question = questions[currentQuestionIndex];
     const questionElement = document.createElement("div");
@@ -291,7 +292,7 @@ function displayQuestion() {
     const answerList = document.getElementById("answerList");
     answerList.addEventListener("click", handleAnswer);
     progressBar.value = currentQuestionIndex;
-    
+
   }
 }
 
