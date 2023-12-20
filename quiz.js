@@ -1,6 +1,16 @@
 // Initialize Choices.js with the class name
 const categoryDropdown = new Choices("#category", {
   searchEnabled: false,
+sorter: (a, b) => {
+    if (a.value === "any") {
+      return -1; // "any" comes first
+    } else if (b.value === "any") {
+      return 1; // "any" comes first
+    } else {
+      // Sort the other categories alphabetically
+      return a.label.localeCompare(b.label);
+    }
+  },
   itemSelectText: "",
   classNames: {
     containerInner: "custom-dropdown",
@@ -32,6 +42,8 @@ const categoryDropdown = new Choices("#category", {
 
 const difficultyDropdown = new Choices("#difficulty", {
   searchEnabled: false,
+  shouldSort: false,
+  shouldSortItems: false,
   itemSelectText: "",
   classNames: {
     containerInner: "custom-dropdown",
@@ -58,6 +70,10 @@ const difficultyDropdown = new Choices("#difficulty", {
     flippedState: "is-flipped",
     selectedState: "is-highlighted",
   },
+  sorter: (a, b) => {
+    const order = { any: 1, easy: 2, medium: 3, hard: 4 };
+    return order[a.value] - order[b.value];
+  },
   allowHTML: true,
 });
 
@@ -73,9 +89,6 @@ const categorySelect = document.getElementById("category");
 const difficultySelect = document.getElementById("difficulty");
 const loader = document.getElementById("loader");
 const progressBar = document.getElementById("progressBar");
-startButton.addEventListener("click", startGame);
-playAgainButton.addEventListener("click", initializeGameState);
-quitButton.addEventListener("click", quitGame);
 const startButtonLanding = document.getElementById("startButtonLanding");
 const landingPage = document.getElementById("landingPage");
 const quizSection = document.getElementById("quizSection");
@@ -85,6 +98,9 @@ startButtonLanding.addEventListener("click", () => {
   quizSection.style.display = "flex";
   initializeGameState();
 });
+startButton.addEventListener("click", startGame);
+playAgainButton.addEventListener("click", initializeGameState);
+quitButton.addEventListener("click", quitGame);
 progressBar.style.display = "none";
 
 function initializeGameState() {
@@ -253,6 +269,7 @@ function shuffleArray(array) {
 function quitGame() {
   quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
   progressBar.style.display = "none";
+  quitButton.style.display = "none"
   setTimeout(() => {
     quizContainer.innerHTML = "";
     initializeGameState();
