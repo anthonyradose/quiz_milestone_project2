@@ -58,8 +58,20 @@ body {
 }
 #loader {
   display: none;
+text-align: center;
 }
+#loader img{
+  animation: rotate 2s linear infinite; /* Adjust the duration as needed */
 
+}
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 .hidden {
   display: none;
 }

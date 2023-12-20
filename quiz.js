@@ -125,7 +125,7 @@ function startGame() {
   document.getElementById("categoryContainer").style.display = "none";
   document.getElementById("difficultyContainer").style.display = "none";
   startButton.style.display = "none";
-  progressBar.style.display = "block";
+progressBar.style.display = "block";
   loader.style.display = "block";
   quizContainer.style.display = "block";
   quizContainer.style.backgroundColor = "transparent";
@@ -157,8 +157,9 @@ function startGame() {
     fetchQuestions(apiUrl);
   }
   quitButton.style.display = "block";
-}
 
+
+}
 // const fetchQuestions = (apiUrl) => {
 //   fetch(apiUrl)
 //     .then((response) => response.json())
@@ -251,13 +252,16 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
       loader.style.display = "none";
       const answerList = document.getElementById("answerList");
       if (answerList) {
-        answerList.style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
+        answerList
+        .style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
       }
     });
 };
 
 function displayQuestion() {
+
   if (isAnsweringAllowed) {
+    
     // Check if answering is allowed before displaying the question
     const question = questions[currentQuestionIndex];
     const questionElement = document.createElement("div");
@@ -287,6 +291,7 @@ function displayQuestion() {
     const answerList = document.getElementById("answerList");
     answerList.addEventListener("click", handleAnswer);
     progressBar.value = currentQuestionIndex;
+    
   }
 }
 
