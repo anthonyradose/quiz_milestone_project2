@@ -33,7 +33,7 @@ body {
   background-color: rgb(93, 116, 138);
   width: 70%;
 }
-.p-description{
+.p-description {
   font-size: 1.1em;
 }
 
@@ -128,4 +128,35 @@ h1 {
 }
 .custom-choices.is-open .choices__list .option-el:hover {
   background-color: rgb(183, 229, 70);
+}
+
+#question-div {
+}
+#categoryDifficultyDiv {
+}
+.categoryDifficulty-p {
+  background: lightblue;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  border-radius: 2px;
+  color: rgb(63, 89, 125);
+}
+#category-p {
+}
+#difficulty-p {
+}
+#question-p {
+}
+#answerList {
+  list-style: none;
+  padding: 0;
+}
+.answer-li {
+  background-color: rgb(183, 229, 70);
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  border-radius: 2px;
+  color: rgb(63, 89, 125);
+  cursor: pointer;
+}
+.answer-li:hover {
+  background-color: rgb(171, 214, 65);
 }

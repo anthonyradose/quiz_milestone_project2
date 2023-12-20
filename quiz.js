@@ -1,7 +1,7 @@
 // Initialize Choices.js with the class name
 const categoryDropdown = new Choices("#category", {
   searchEnabled: false,
-sorter: (a, b) => {
+  sorter: (a, b) => {
     if (a.value === "any") {
       return -1; // "any" comes first
     } else if (b.value === "any") {
@@ -39,7 +39,6 @@ sorter: (a, b) => {
   },
   allowHTML: true,
 });
-
 
 const difficultyDropdown = new Choices("#difficulty", {
   searchEnabled: false,
@@ -215,10 +214,10 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
         const mockData = [
           {
             category: "General Knowledge",
-            difficulty: "medium",
+            difficulty: "Medium",
             question: "What is the capital of France?",
-            correct_answer: "Paris",
-            incorrect_answers: ["Berlin", "Madrid", "Rome"],
+            correct_answer: "B. Paris",
+            incorrect_answers: ["C. Berlin", "D. Madrid", "A. Rome"],
           },
           // Add more mock questions as needed
         ];
@@ -235,7 +234,7 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
       const mockData = [
         {
           category: "General Knowledge",
-          difficulty: "medium",
+          difficulty: "Medium",
           question: "What is the capital of France?",
           correct_answer: "Paris",
           incorrect_answers: ["Berlin", "Madrid", "Rome"],
@@ -256,21 +255,28 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
     });
 };
 
-
 function displayQuestion() {
   if (isAnsweringAllowed) {
     // Check if answering is allowed before displaying the question
     const question = questions[currentQuestionIndex];
     const questionElement = document.createElement("div");
+    questionElement.id = "question-div";
     // Display selected category and difficulty if available
-    const categoryDifficultyText = `<p>Category: ${question.category}, Difficulty: ${question.difficulty}</p>`;
+    const categoryDifficultyDiv = `
+    
+   <div id="categoryDifficultyDiv"> 
+    <p class="categoryDifficulty-p p-3" id="category-p">Category: ${question.category}</p> 
+    <p class="categoryDifficulty-p p-3" id="difficulty-p">Difficulty: ${question.difficulty}</p>
+   </div>
+    `;
     questionElement.innerHTML = `
-    ${categoryDifficultyText}
 
-      <p>${question.question}</p>
+    ${categoryDifficultyDiv}
+
+      <p id="question-p">${question.question}</p>
       <ul id="answerList">
         ${shuffleArray([...question.incorrect_answers, question.correct_answer])
-          .map((answer) => `<li>${answer}</li>`)
+          .map((answer) => `<li class="answer-li p-3">${answer}</li>`)
           .join("")}
       </ul>
     `;
@@ -318,7 +324,7 @@ function displayFeedback(message) {
 
     // Move to the next question or end the quiz after removing the feedback
     currentQuestionIndex++;
-    if (currentQuestionIndex < 10) {
+    if (currentQuestionIndex < 1) {
       displayQuestion();
     } else {
       endGame();
@@ -343,7 +349,7 @@ function shuffleArray(array) {
 function quitGame() {
   quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
   progressBar.style.display = "none";
-  quitButton.style.display = "none"
+  quitButton.style.display = "none";
   setTimeout(() => {
     quizContainer.innerHTML = "";
     initializeGameState();
