@@ -160,3 +160,14 @@ h1 {
 .answer-li:hover {
   background-color: rgb(171, 214, 65);
 }
+
+#feedbackDiv{
+  border-radius: 4px;
+  background-color: lightblue;
+padding: 1rem
+}
+
+#quizContainer{
+  border-radius : 4px;
+  padding: 1rem;
+}

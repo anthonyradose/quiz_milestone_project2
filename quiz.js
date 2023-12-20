@@ -128,6 +128,7 @@ function startGame() {
   progressBar.style.display = "block";
   loader.style.display = "block";
   quizContainer.style.display = "block";
+  quizContainer.style.backgroundColor = "transparent";
   // Get selected category and difficulty
   const selectedCategory = categorySelect.value;
   const selectedDifficulty = difficultySelect.value;
@@ -215,7 +216,7 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
           {
             category: "General Knowledge",
             difficulty: "Medium",
-            question: "What is the capital of France?",
+            question: `What is the capital of France<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><circle cx="256" cy="256" r="256" fill="#ffea00" opacity="1" data-original="#ff2147" class=""></circle><g fill="#fff"><path d="M252.94 395.94h-25.38c-5.74 0-9.58-3.7-9.6-9.42 2.1-65.89-11.87-60.86 35.69-60.59 45.7-.33 32.19-4.8 34.29 59.78 0 6.71-3.51 10.23-10.17 10.24zM251.9 312c-8.28 0-16.56-.06-24.84 0-6.76.43-8.08-7.28-9-12.35-2.35-21.88 6.75-38.87 22.85-52.87 11.3-10.81 26.76-15.33 38.72-25.09 11.14-9.61 10-25.83-1.87-34.37-12.92-9.26-33.48-10.23-46.73-1.66-9.37 6.58-16.28 16.24-23.7 24.87-4.38 5.21-8.71 5.77-14.12 1.67q-17.05-12.92-34-25.93c-4.78-3.66-5.41-7.9-2.29-13 31.3-57.2 110.88-75.8 163.08-36 35 22.77 50.45 73.95 23.25 108.46-10.63 15-28.66 21.56-42.77 32.52C280.56 295 293 310.76 276.75 312H251.9z" fill="#ffffff" opacity="1" data-original="#ffffff"></path></g></g></g></svg>`,
             correct_answer: "B. Paris",
             incorrect_answers: ["C. Berlin", "D. Madrid", "A. Rome"],
           },
@@ -235,7 +236,7 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
         {
           category: "General Knowledge",
           difficulty: "Medium",
-          question: "What is the capital of France?",
+          question: `What is the capital of France <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><circle cx="256" cy="256" r="256" fill="#ffea00" opacity="1" data-original="#ff2147" class=""></circle><g fill="#fff"><path d="M252.94 395.94h-25.38c-5.74 0-9.58-3.7-9.6-9.42 2.1-65.89-11.87-60.86 35.69-60.59 45.7-.33 32.19-4.8 34.29 59.78 0 6.71-3.51 10.23-10.17 10.24zM251.9 312c-8.28 0-16.56-.06-24.84 0-6.76.43-8.08-7.28-9-12.35-2.35-21.88 6.75-38.87 22.85-52.87 11.3-10.81 26.76-15.33 38.72-25.09 11.14-9.61 10-25.83-1.87-34.37-12.92-9.26-33.48-10.23-46.73-1.66-9.37 6.58-16.28 16.24-23.7 24.87-4.38 5.21-8.71 5.77-14.12 1.67q-17.05-12.92-34-25.93c-4.78-3.66-5.41-7.9-2.29-13 31.3-57.2 110.88-75.8 163.08-36 35 22.77 50.45 73.95 23.25 108.46-10.63 15-28.66 21.56-42.77 32.52C280.56 295 293 310.76 276.75 312H251.9z" fill="#ffffff" opacity="1" data-original="#ffffff"></path></g></g></g></svg>`,
           correct_answer: "Paris",
           incorrect_answers: ["Berlin", "Madrid", "Rome"],
         },
@@ -330,6 +331,8 @@ function handleAnswer(event) {
 
 function displayFeedback(message) {
   const feedbackElement = document.createElement("div");
+  feedbackElement.id = "feedbackDiv";
+
   feedbackElement.innerHTML = message;
   feedbackElement.style.color = "black"; // Set font color to black for visibility
 
@@ -354,7 +357,18 @@ function displayFeedback(message) {
 }
 
 function endGame() {
-  quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10.</p>`;
+  let icon;
+
+  if (userScore >= 7 && userScore <= 10) {
+    icon = "🏆"; // Trophy icon for high scores
+  } else if (userScore >= 4 && userScore <= 6) {
+    icon = "😐"; // Star icon for medium scores
+  } else {
+    icon = "💔"; // Confetti icon for low scores
+  }
+  quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10 ${icon}.</p>`;
+  quizContainer.style.backgroundColor = "lightblue";
+
   progressBar.style.display = "none";
   playAgainButton.style.display = "block";
 }
@@ -369,6 +383,7 @@ function shuffleArray(array) {
 
 function quitGame() {
   quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
+  quizContainer.style.backgroundColor = "lightblue";
   progressBar.style.display = "none";
   quitButton.style.display = "none";
   setTimeout(() => {
