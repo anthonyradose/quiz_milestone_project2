@@ -23,11 +23,11 @@ body {
 }
 .p-subheading {
   font-size: 1.3em;
-  color: rgb(33, 89, 125);
+  color: #21597d;
 }
 
 #p-description-div {
-  color: ghostwhite;
+  color: white;
   border-radius: 4px;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
   background-color: rgb(93, 116, 138);
@@ -41,12 +41,13 @@ body {
   font-size: 1em;
   background: orange;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: rgb(63, 89, 125);
+  color: #384766;
   transition: transform 0.2s ease-in-out;
   border: none;
 }
 #startButtonLanding:hover {
   background-color: darkorange;
+  color: #323d58;
 }
 #startButtonLanding:active {
   box-shadow: -1px 0px 0px 1px rgb(63, 89, 125);
@@ -58,25 +59,24 @@ body {
 }
 #loader {
   display: none;
-text-align: center;
+  text-align: center;
 }
-#loader img{
+#loader img {
   animation: rotate 2s linear infinite; /* Adjust the duration as needed */
-
 }
 @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .hidden {
   display: none;
 }
 h1 {
-  color: rgb(63, 89, 125);
+  color: #21597d;
 }
 
 #quizSection {
@@ -100,7 +100,7 @@ h1 {
 #startButton:active {
   box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
 }
-#playAgainButton{
+#playAgainButton {
   font-size: 1em;
   background: orange;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
@@ -108,10 +108,10 @@ h1 {
   transition: transform 0.2s ease-in-out;
   border: none;
 }
-#playAgainButton:active{
+#playAgainButton:active {
   box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
 }
-#playAgainButton:hover{
+#playAgainButton:hover {
   background-color: darkorange;
 }
 #quitButton {
@@ -188,17 +188,16 @@ h1 {
   background-color: rgb(171, 214, 65);
 }
 
-#feedbackDiv{
+#feedbackDiv {
   border-radius: 4px;
   background-color: lightblue;
-padding: 1rem
-}
-
-#quizContainer{
-  border-radius : 4px;
   padding: 1rem;
 }
 
+#quizContainer {
+  border-radius: 4px;
+  padding: 1rem;
+}
 
 /* Extra small	None	<576px
 Small	sm	≥576px
