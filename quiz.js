@@ -297,8 +297,29 @@ function handleAnswer(event) {
     const isCorrect = selectedAnswer === correctAnswer;
 
     const feedbackMessage = isCorrect
-      ? "Correct!"
-      : `Incorrect. The correct answer is: ${correctAnswer}`;
+      ? `
+      <svg
+        id="Layer_1"
+        enable-background="new 0 0 512 512"
+        height="30"
+        viewBox="0 0 512 512"
+        width="30"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-rule="evenodd" fill-rule="evenodd">
+          <path
+            d="m256 0c-141.2 0-256 114.8-256 256s114.8 256 256 256 256-114.8 256-256-114.8-256-256-256z"
+            fill="#4bae4f"
+          />
+          <path
+            d="m379.8 169.7c6.2 6.2 6.2 16.4 0 22.6l-150 150c-3.1 3.1-7.2 4.7-11.3 4.7s-8.2-1.6-11.3-4.7l-75-75c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0l63.7 63.7 138.7-138.7c6.2-6.3 16.4-6.3 22.6 0z"
+            fill="#fff"
+          />
+        </g>
+      </svg>
+      Correct!
+    `
+      : `<svg    width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><g id="Layer_19" data-name="Layer 19"><circle cx="25" cy="25" fill="#ee685c" r="22.5"/><path d="m32.91076 30.08233-5.08233-5.08233 5.08233-5.08233a2 2 0 0 0 0-2.82843 2 2 0 0 0 -2.82843 0l-5.08233 5.08233-5.08233-5.08233a2 2 0 0 0 -2.82843 0 2 2 0 0 0 0 2.82843l5.08233 5.08233-5.08233 5.08233a2 2 0 0 0 0 2.82843 2 2 0 0 0 2.82843 0l5.08233-5.08233 5.08233 5.08233a2 2 0 0 0 2.82843 0 2 2 0 0 0 0-2.82843z" fill="#fff"/></g></svg>Incorrect. The correct answer is: ${correctAnswer}`;
     displayFeedback(feedbackMessage);
     // Update the user's score
     if (isCorrect) {
@@ -308,8 +329,8 @@ function handleAnswer(event) {
 }
 
 function displayFeedback(message) {
-  const feedbackElement = document.createElement("p");
-  feedbackElement.textContent = message;
+  const feedbackElement = document.createElement("div");
+  feedbackElement.innerHTML = message;
   feedbackElement.style.color = "black"; // Set font color to black for visibility
 
   // Clear the existing feedback elements
