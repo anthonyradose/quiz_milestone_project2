@@ -117,7 +117,7 @@ function initializeGameState() {
   categorySelect.disabled = false;
   difficultySelect.disabled = false;
   playAgainButton.style.display = "none";
-  quitButton.style.display="none"
+quitButton.style.display="none"
   quizContainer.innerHTML = "";
   quizContainer.style.display = "none";
 }
@@ -126,7 +126,6 @@ function startGame() {
   document.getElementById("categoryContainer").style.display = "none";
   document.getElementById("difficultyContainer").style.display = "none";
   startButton.style.display = "none";
-  progressBar.style.display = "block";
   loader.style.display = "block";
   quizContainer.style.display = "block";
   quizContainer.style.backgroundColor = "transparent";
@@ -156,8 +155,10 @@ function startGame() {
     let apiUrl = "https://opentdb.com/api.php?amount=10";
 
     fetchQuestions(apiUrl);
+    
   }
-  quitButton.style.display = "block";
+
+  
 
 
 }
@@ -260,9 +261,9 @@ const fetchQuestions = (apiUrl, timeout = 1000) => {
 };
 
 function displayQuestion() {
-
+  quitButton.style.display = "block";
+  progressBar.style.display = "block"
   if (isAnsweringAllowed) {
-
     // Check if answering is allowed before displaying the question
     const question = questions[currentQuestionIndex];
     const questionElement = document.createElement("div");
@@ -292,7 +293,7 @@ function displayQuestion() {
     const answerList = document.getElementById("answerList");
     answerList.addEventListener("click", handleAnswer);
     progressBar.value = currentQuestionIndex;
-
+    
   }
 }
 
@@ -332,10 +333,13 @@ function handleAnswer(event) {
     if (isCorrect) {
       userScore++;
     }
+    
   }
+  
 }
 
 function displayFeedback(message) {
+  
   const feedbackElement = document.createElement("div");
   feedbackElement.id = "feedbackDiv";
 
@@ -356,6 +360,7 @@ function displayFeedback(message) {
     currentQuestionIndex++;
     if (currentQuestionIndex < 1) {
       displayQuestion();
+
     } else {
       endGame();
     }
