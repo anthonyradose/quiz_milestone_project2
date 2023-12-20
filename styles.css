@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
-  background-color: ghostwhite;
+  background-color: #f8f8ff;
 }
 #landingPage {
   height: 90vh;
@@ -25,7 +25,9 @@ body {
   font-size: 1.3em;
   color: #21597d;
 }
-
+label{
+color: #19405D;
+}
 #p-description-div {
   color: white;
   border-radius: 4px;
@@ -52,7 +54,21 @@ body {
 #startButtonLanding:active {
   box-shadow: -1px 0px 0px 1px rgb(63, 89, 125);
 }
-
+#startButton {
+  font-size: 1em;
+  background: orange;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  color: #384766;
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+#startButton:hover {
+  background-color: darkorange;
+  color: #323d58;
+}
+#startButton:active {
+  box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
+}
 .logo-link:hover {
   transform: scale(1.1);
   cursor: pointer;
@@ -86,20 +102,7 @@ h1 {
   justify-content: space-evenly;
   align-items: center;
 }
-#startButton {
-  font-size: 1em;
-  background: orange;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: rgb(63, 89, 125);
-  transition: transform 0.2s ease-in-out;
-  border: none;
-}
-#startButton:hover {
-  background-color: darkorange;
-}
-#startButton:active {
-  box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
-}
+
 #playAgainButton {
   font-size: 1em;
   background: orange;
@@ -136,7 +139,8 @@ h1 {
 }
 
 .custom-choices {
-  background-color: lightblue;
+  background-color: #add8e6;
+  color: #19405D;
 }
 
 .custom-dropdown {
@@ -154,7 +158,7 @@ h1 {
   background-color: lightblue;
 }
 .custom-choices.is-open .choices__list .option-el:hover {
-  background-color: rgb(183, 229, 70);
+  background-color: #b7e546;
 }
 
 #question-div {
@@ -178,7 +182,7 @@ h1 {
   padding: 0;
 }
 .answer-li {
-  background-color: rgb(183, 229, 70);
+  background-color: #b7e546;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
   border-radius: 2px;
   color: rgb(63, 89, 125);
