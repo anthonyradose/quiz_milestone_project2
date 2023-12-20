@@ -40,6 +40,7 @@ sorter: (a, b) => {
   allowHTML: true,
 });
 
+
 const difficultyDropdown = new Choices("#difficulty", {
   searchEnabled: false,
   shouldSort: false,
@@ -158,21 +159,93 @@ function startGame() {
   quitButton.style.display = "block";
 }
 
-const fetchQuestions = (apiUrl) => {
-  fetch(apiUrl)
-    .then((response) => response.json())
+// const fetchQuestions = (apiUrl) => {
+//   fetch(apiUrl)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       questions = data.results;
+//       if (questions && questions.length > 0) {
+//         isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
+//         displayQuestion();
+//       } else {
+//         console.error("No questions loaded.");
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//       console.error("Failed to load questions. Retrying...");
+//     })
+//     .finally(() => {
+//       loader.style.display = "none";
+//       const answerList = document.getElementById("answerList");
+//       if (answerList) {
+//         answerList.style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
+//       }
+//     });
+// };
+
+const fetchQuestions = (apiUrl, timeout = 1000) => {
+  console.log("Fetching questions from:", apiUrl);
+
+  // Create a promise that rejects after the specified timeout
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error("Timeout exceeded")), timeout);
+  });
+
+  // Combine the fetch request with the timeout promise
+  Promise.race([fetch(apiUrl), timeoutPromise])
+    .then((response) => {
+      // Check if the response is from the API or the timeout
+      if (response instanceof Response) {
+        console.log("Response status:", response.status);
+        return response.json();
+      } else {
+        throw new Error("API request timed out");
+      }
+    })
     .then((data) => {
+      console.log("Received data:", data);
       questions = data.results;
       if (questions && questions.length > 0) {
         isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
         displayQuestion();
       } else {
-        console.error("No questions loaded.");
+        console.error("No questions loaded. Using mock data.");
+        // Mock Data for when API is down
+        const mockData = [
+          {
+            category: "General Knowledge",
+            difficulty: "medium",
+            question: "What is the capital of France?",
+            correct_answer: "Paris",
+            incorrect_answers: ["Berlin", "Madrid", "Rome"],
+          },
+          // Add more mock questions as needed
+        ];
+        console.log("Using mock data:", mockData);
+        questions = mockData;
+        isAnsweringAllowed = true;
+        displayQuestion();
       }
     })
     .catch((error) => {
       console.error("Error:", error);
       console.error("Failed to load questions. Retrying...");
+      // Optionally, you can use mock data for testing
+      const mockData = [
+        {
+          category: "General Knowledge",
+          difficulty: "medium",
+          question: "What is the capital of France?",
+          correct_answer: "Paris",
+          incorrect_answers: ["Berlin", "Madrid", "Rome"],
+        },
+        // Add more mock questions as needed
+      ];
+      console.log("Using mock data:", mockData);
+      questions = mockData;
+      isAnsweringAllowed = true;
+      displayQuestion();
     })
     .finally(() => {
       loader.style.display = "none";
@@ -182,6 +255,7 @@ const fetchQuestions = (apiUrl) => {
       }
     });
 };
+
 
 function displayQuestion() {
   if (isAnsweringAllowed) {
