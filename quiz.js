@@ -211,6 +211,10 @@ const fetchQuestions = (apiUrl) => {
     });
 };
 
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function displayQuestion() {
   quitButton.style.display = "block";
   progressBar.style.display = "block";
@@ -221,23 +225,38 @@ function displayQuestion() {
     questionElement.id = "question-div";
     // Display selected category and difficulty if available
     const categoryDifficultyDiv = `
-    
-   <div id="categoryDifficultyDiv"> 
-    <p class="categoryDifficulty-p p-3" id="category-p">Category: ${question.category}</p> 
-    <p class="categoryDifficulty-p p-3" id="difficulty-p">Difficulty: ${question.difficulty}</p>
-   </div>
+      <div id="categoryDifficultyDiv"> 
+        <p class="categoryDifficulty-p p-3" id="category-p">Category: ${
+          question.category
+        }</p> 
+        <p class="categoryDifficulty-p p-3" id="difficulty-p">Difficulty: ${capitalizeFirstLetter(
+          question.difficulty
+        )}</p>
+      </div>
     `;
+
+    // Shuffle the answers
+    const shuffledAnswers = shuffleArray([
+      ...question.incorrect_answers,
+      question.correct_answer,
+    ]);
+
+    // Create an array of labels (a, b, c, d)
+    const answerLabels = ["A", "B", "C", "D"];
+
+    // Generate HTML for answer options with labels
+    const answerListHTML = shuffledAnswers
+      .map((answer, index) => {
+        return `<li class="answer-li m-3 p-3">${answerLabels[index]}. ${answer}</li>`;
+      })
+      .join("");
+
     questionElement.innerHTML = `
-
-    ${categoryDifficultyDiv}
-
+      ${categoryDifficultyDiv}
       <p id="question-p">${question.question}</p>
-      <ul id="answerList">
-        ${shuffleArray([...question.incorrect_answers, question.correct_answer])
-          .map((answer) => `<li class="answer-li p-3">${answer}</li>`)
-          .join("")}
-      </ul>
+      <ul id="answerList">${answerListHTML}</ul>
     `;
+
     quizContainer.innerHTML = "";
     quizContainer.appendChild(questionElement);
 

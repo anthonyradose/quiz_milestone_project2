@@ -170,9 +170,9 @@ h1 {
 }
 .categoryDifficulty-p {
   background: #add8e6;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
   border-radius: 2px;
   color: #21597d;
+  border: 1px solid #21597d
 }
 #category-p {
 }
