@@ -180,6 +180,7 @@ function startGame() {
     console.log(selectedCategory);
   }
 }
+
 const fetchQuestions = (apiUrl) => {
   fetch(apiUrl)
     .then((response) => response.json())
@@ -216,6 +217,8 @@ function capitalizeFirstLetter(str) {
 }
 
 function displayQuestion() {
+  console.log("Displaying question:", currentQuestionIndex);
+
   quitButton.style.display = "block";
   progressBar.style.display = "block";
   if (isAnsweringAllowed) {
@@ -267,8 +270,11 @@ function displayQuestion() {
 }
 
 function handleAnswer(event) {
+  console.log("Handling answer:", event.target.textContent);
+
   if (isAnsweringAllowed && event.target.tagName === "LI") {
-    const selectedAnswer = event.target.textContent;
+    const selectedAnswer = event.target.textContent.trim().substring(3); // Extract the answer text without the label
+
     const correctAnswer = questions[currentQuestionIndex].correct_answer;
 
     const isCorrect = selectedAnswer === correctAnswer;
@@ -306,6 +312,8 @@ function handleAnswer(event) {
 }
 
 function displayFeedback(message) {
+  console.log("Displaying feedback:", message);
+
   const feedbackElement = document.createElement("div");
   feedbackElement.id = "feedbackDiv";
 
