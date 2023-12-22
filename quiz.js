@@ -92,6 +92,8 @@ const progressBar = document.getElementById("progressBar");
 const startButtonLanding = document.getElementById("startButtonLanding");
 const landingPage = document.getElementById("landingPage");
 const quizSection = document.getElementById("quizSection");
+const categoryContainer = document.getElementById("categoryContainer")
+const difficultyContainer = document.getElementById("difficultyContainer")
 
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
@@ -110,8 +112,9 @@ function initializeGameState() {
   progressBar.value = 0;
   isAnsweringAllowed = false;
   startButton.style.display = "block";
-  document.getElementById("categoryContainer").style.display = "block";
-  document.getElementById("difficultyContainer").style.display = "block";
+categoryContainer.style.display = "block";
+difficultyContainer.style.display = "block"
+
   categorySelect.value = "any";
   difficultySelect.value = "any";
   categoryDropdown.setChoiceByValue("any");
@@ -125,8 +128,8 @@ function initializeGameState() {
 }
 
 function startGame() {
-  document.getElementById("categoryContainer").style.display = "none";
-  document.getElementById("difficultyContainer").style.display = "none";
+  categoryContainer.style.display = "none";
+  difficultyContainer.style.display = "none";
   startButton.style.display = "none";
   loader.style.display = "block";
   quizContainer.style.display = "block";
@@ -158,10 +161,10 @@ function startGame() {
     let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
     userScore = 0;
     progressBar.value = 0;
-    const answerList = document.getElementById("answerList");
-    if (answerList) {
-      answerList.innerHTML = ""; // Clear answer options
-      answerList.style.pointerEvents = "none"; // Disable answer options during fetch
+    const answerListStartGame = document.getElementById("answerList");
+    if (answerListStartGame) {
+      answerListStartGame.innerHTML = ""; // Clear answer options
+      answerListStartGame.style.pointerEvents = "none"; // Disable answer options during fetch
     }
 
     isAnsweringAllowed = false; // Set answering flag to false during question loading
@@ -205,9 +208,9 @@ const fetchQuestions = (apiUrl) => {
     })
     .finally(() => {
       loader.style.display = "none";
-      const answerList = document.getElementById("answerList");
-      if (answerList) {
-        answerList.style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
+      const answerListFetchQuestions = document.getElementById("answerList");
+      if (answerListFetchQuestions) {
+        answerListFetchQuestions.style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
       }
     });
 };
@@ -366,12 +369,13 @@ function shuffleArray(array) {
 }
 
 function quitGame() {
+    progressBar.style.display = "none";
+  quitButton.style.display = "none";
   quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
   quizContainer.style.backgroundColor = "lightblue";
-  progressBar.style.display = "none";
-  quitButton.style.display = "none";
+
   setTimeout(() => {
     quizContainer.innerHTML = "";
     initializeGameState();
-  }, 3000);
+  }, 1000);
 }
