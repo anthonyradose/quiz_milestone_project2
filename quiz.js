@@ -114,7 +114,6 @@ function initializeGameState() {
   startButton.style.display = "block";
 categoryContainer.style.display = "block";
 difficultyContainer.style.display = "block"
-
   categorySelect.value = "any";
   difficultySelect.value = "any";
   categoryDropdown.setChoiceByValue("any");
@@ -126,23 +125,24 @@ difficultyContainer.style.display = "block"
   quizContainer.innerHTML = "";
   quizContainer.style.display = "none";
 }
-
-function startGame() {
+function hideStartElements() {
   categoryContainer.style.display = "none";
   difficultyContainer.style.display = "none";
   startButton.style.display = "none";
+}
+function displayLoader() {
   loader.style.display = "block";
   quizContainer.style.display = "block";
   quizContainer.style.backgroundColor = "transparent";
+}
+function buildApiUrlBasedOnSelection() {
   // Get selected category and difficulty
   const selectedCategory = categorySelect.value;
   const selectedDifficulty = difficultySelect.value;
-
   categorySelect.disabled = true;
   difficultySelect.disabled = true;
-
   // Check if the user has made a selection
-  // Exceptional Cases due to lack of questions in api for particular combo of difficulty & category:
+  // Exceptional Cases due to lack of questions in api for a particular combo of difficulty & category:
   // Art - hard
   // Celebrities - hard
   // Gadgets - hard
@@ -153,35 +153,23 @@ function startGame() {
     (selectedCategory === "26" && selectedDifficulty === "hard") ||
     (selectedCategory === "30" && selectedDifficulty === "hard")
   ) {
-    console.log(selectedCategory);
-    let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
-    fetchQuestions(apiUrl);
+    return `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
   } else if (selectedCategory !== "any" && selectedDifficulty !== "any") {
     // Construct the API URL with the selected category and difficulty
-    let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
-    userScore = 0;
-    progressBar.value = 0;
-    const answerListStartGame = document.getElementById("answerList");
-    if (answerListStartGame) {
-      answerListStartGame.innerHTML = ""; // Clear answer options
-      answerListStartGame.style.pointerEvents = "none"; // Disable answer options during fetch
-    }
-
-    isAnsweringAllowed = false; // Set answering flag to false during question loading
-
-    fetchQuestions(apiUrl);
+    return `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
   } else if (selectedCategory === "any" && selectedDifficulty !== "any") {
-    let apiUrl = `https://opentdb.com/api.php?amount=10&difficulty=${selectedDifficulty}`;
-    fetchQuestions(apiUrl);
+    return `https://opentdb.com/api.php?amount=10&difficulty=${selectedDifficulty}`;
   } else if (selectedCategory !== "any" && selectedDifficulty === "any") {
-    let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
-    fetchQuestions(apiUrl);
-    console.log(selectedCategory);
+    return `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
   } else {
-    let apiUrl = "https://opentdb.com/api.php?amount=10";
-    fetchQuestions(apiUrl);
-    console.log(selectedCategory);
+    return "https://opentdb.com/api.php?amount=10";
   }
+}
+function startGame() {
+hideStartElements()
+displayLoader()
+const apiUrl = buildApiUrlBasedOnSelection();
+fetchQuestions(apiUrl);
 }
 
 const fetchQuestions = (apiUrl) => {
