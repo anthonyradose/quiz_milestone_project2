@@ -114,6 +114,8 @@ function initializeGameState() {
   document.getElementById("difficultyContainer").style.display = "block";
   categorySelect.value = "any";
   difficultySelect.value = "any";
+  categoryDropdown.setChoiceByValue("any");
+  difficultyDropdown.setChoiceByValue("any");
   categorySelect.disabled = false;
   difficultySelect.disabled = false;
   playAgainButton.style.display = "none";
@@ -137,7 +139,21 @@ function startGame() {
   difficultySelect.disabled = true;
 
   // Check if the user has made a selection
-  if (selectedCategory !== "any" && selectedDifficulty !== "any") {
+  // Exceptional Cases due to lack of questions in api for particular combo of difficulty & category:
+  // Art - hard
+  // Celebrities - hard
+  // Gadgets - hard
+  // Musicals & Theatre - easy
+  if (
+    (selectedCategory === "13" && selectedDifficulty === "easy") ||
+    (selectedCategory === "25" && selectedDifficulty === "hard") ||
+    (selectedCategory === "26" && selectedDifficulty === "hard") ||
+    (selectedCategory === "30" && selectedDifficulty === "hard")
+  ) {
+    console.log(selectedCategory);
+    let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
+    fetchQuestions(apiUrl);
+  } else if (selectedCategory !== "any" && selectedDifficulty !== "any") {
     // Construct the API URL with the selected category and difficulty
     let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}&difficulty=${selectedDifficulty}`;
     userScore = 0;
@@ -151,17 +167,26 @@ function startGame() {
     isAnsweringAllowed = false; // Set answering flag to false during question loading
 
     fetchQuestions(apiUrl);
+  } else if (selectedCategory === "any" && selectedDifficulty !== "any") {
+    let apiUrl = `https://opentdb.com/api.php?amount=10&difficulty=${selectedDifficulty}`;
+    fetchQuestions(apiUrl);
+  } else if (selectedCategory !== "any" && selectedDifficulty === "any") {
+    let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
+    fetchQuestions(apiUrl);
+    console.log(selectedCategory);
   } else {
     let apiUrl = "https://opentdb.com/api.php?amount=10";
-
     fetchQuestions(apiUrl);
+    console.log(selectedCategory);
   }
 }
 const fetchQuestions = (apiUrl) => {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       questions = data.results;
+
       if (questions && questions.length > 0) {
         isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
         displayQuestion();
@@ -280,7 +305,7 @@ function displayFeedback(message) {
 
     // Move to the next question or end the quiz after removing the feedback
     currentQuestionIndex++;
-    if (currentQuestionIndex < 1) {
+    if (currentQuestionIndex < 10) {
       displayQuestion();
     } else {
       endGame();
