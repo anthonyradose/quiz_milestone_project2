@@ -244,7 +244,7 @@ No errors were found.
 
 ---
 
-**Functionality Testing:**
+## Functionality Testing: ##
 
 #### Category Dropdown
 
@@ -353,7 +353,7 @@ No errors were found.
 
 | Test Case                                        | Expected Result                                        | Outcome |
 | ------------------------------------------------ | ------------------------------------------------------ | ------- |
-| Select "Celebrities" (Exception Case) and "Hard" | API URL should include category=26 and difficulty=any |         |
+| Select "Celebrities" (Exception Case) and "Hard" | API URL should include category=26 and difficulty=any  |         |
 
 #### Start Button Click
 
@@ -454,6 +454,6 @@ I deployed the website initially using Codeanywhere and later continued developm
 - [Open Trivia Database](https://opentdb.com/api_config.php) (used for the quiz questions)
 - [Van Halen's official Youtube channel](https://www.youtube.com/@VanHalen/featured) (For music videos)
 - All icons have been credited in html code
-- [Ryan Ochieng] (https://medium.com/@ryanomoro37/quizwiz-unveiled-building-the-ultimate-quiz-app-26749eed16f9) (For initial brainstorming and inspiration of project)
+- [Ryan Ochieng/Medium](https://medium.com/@ryanomoro37/quizwiz-unveiled-building-the-ultimate-quiz-app-26749eed16f9) (For initial brainstorming and inspiration of project)
 - My mentor Marcel for his support, encouragement, advice and guidance throughout the developing of this app.
 
