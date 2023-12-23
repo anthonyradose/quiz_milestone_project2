@@ -135,7 +135,7 @@ function hideStartElements() {
   difficultyContainer.style.display = "none";
   startButton.style.display = "none";
 }
-function displayLoader(showLoader) {
+function displayLoader(showLoader = true) {
   loader.style.display = showLoader ? "block" : "none";
   if (showLoader) {
     setTimeout(() => {
@@ -147,6 +147,7 @@ function displayLoader(showLoader) {
     quizContainer.style.backgroundColor = "transparent";
   }
 }
+
 function displayErrorMessage(message) {
   const errorDiv = document.getElementById("error-message");
   if (errorDiv) {
@@ -177,11 +178,12 @@ function endGame() {
   let icon;
 
   if (userScore >= 7 && userScore <= 10) {
-    icon = "🏆"; // Trophy icon for high scores
+    icon = `<img src="./assets/icons/trophy.svg" alt="Trophy Icon">`; // Trophy icon for high scores
   } else if (userScore >= 4 && userScore <= 6) {
-    icon = "😐"; // Star icon for medium scores
+    icon =     icon = `<img src="./assets/icons/neutral-face.svg" alt="Neutral Icon">`; // Star icon for medium scores
+
   } else {
-    icon = "💔"; // Confetti icon for low scores
+    icon =     icon = `<img src="./assets/icons/broken-heart.svg" alt="Heart Icon">`; // Star icon for medium scores
   }
   quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10 ${icon}.</p>`;
   quizContainer.style.backgroundColor = "lightblue";
@@ -348,7 +350,8 @@ function replaceQuestionMarkWithSVG(text) {
   return text.replace(
     "?",
     `
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><circle cx="256" cy="256" r="256" fill="#0000ff" opacity="1" data-original="#ff2147" class=""></circle><g fill="#fff"><path d="M252.94 395.94h-25.38c-5.74 0-9.58-3.7-9.6-9.42 2.1-65.89-11.87-60.86 35.69-60.59 45.7-.33 32.19-4.8 34.29 59.78 0 6.71-3.51 10.23-10.17 10.24zM251.9 312c-8.28 0-16.56-.06-24.84 0-6.76.43-8.08-7.28-9-12.35-2.35-21.88 6.75-38.87 22.85-52.87 11.3-10.81 26.76-15.33 38.72-25.09 11.14-9.61 10-25.83-1.87-34.37-12.92-9.26-33.48-10.23-46.73-1.66-9.37 6.58-16.28 16.24-23.7 24.87-4.38 5.21-8.71 5.77-14.12 1.67q-17.05-12.92-34-25.93c-4.78-3.66-5.41-7.9-2.29-13 31.3-57.2 110.88-75.8 163.08-36 35 22.77 50.45 73.95 23.25 108.46-10.63 15-28.66 21.56-42.77 32.52C280.56 295 293 310.76 276.75 312H251.9z" fill="#ffffff" opacity="1" data-original="#ffffff"></path></g></g></g></svg>
+   <img src="./assets/icons/question-mark.svg" alt="Question Icon">
+
   `
   );
 }
@@ -374,28 +377,11 @@ function handleAnswer(event) {
 
     const feedbackMessage = isCorrect
       ? `
-      <svg
-        id="Layer_1"
-        enable-background="new 0 0 512 512"
-        height="30"
-        viewBox="0 0 512 512"
-        width="30"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g clip-rule="evenodd" fill-rule="evenodd">
-          <path
-            d="m256 0c-141.2 0-256 114.8-256 256s114.8 256 256 256 256-114.8 256-256-114.8-256-256-256z"
-            fill="#4bae4f"
-          />
-          <path
-            d="m379.8 169.7c6.2 6.2 6.2 16.4 0 22.6l-150 150c-3.1 3.1-7.2 4.7-11.3 4.7s-8.2-1.6-11.3-4.7l-75-75c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0l63.7 63.7 138.7-138.7c6.2-6.3 16.4-6.3 22.6 0z"
-            fill="#fff"
-          />
-        </g>
-      </svg>
+      <img src="./assets/icons/correct.svg" alt="Correct Icon">
       Correct!
     `
-      : `<svg    width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><g id="Layer_19" data-name="Layer 19"><circle cx="25" cy="25" fill="#ee685c" r="22.5"/><path d="m32.91076 30.08233-5.08233-5.08233 5.08233-5.08233a2 2 0 0 0 0-2.82843 2 2 0 0 0 -2.82843 0l-5.08233 5.08233-5.08233-5.08233a2 2 0 0 0 -2.82843 0 2 2 0 0 0 0 2.82843l5.08233 5.08233-5.08233 5.08233a2 2 0 0 0 0 2.82843 2 2 0 0 0 2.82843 0l5.08233-5.08233 5.08233 5.08233a2 2 0 0 0 2.82843 0 2 2 0 0 0 0-2.82843z" fill="#fff"/></g></svg>Incorrect. The correct answer is: ${correctAnswer}`;
+      : `<img src="./assets/icons/incorrect.svg" alt="Incorrect Icon">
+      Incorrect. The correct answer is: ${correctAnswer}`;
     displayFeedback(feedbackMessage);
     // Update the user's score
     if (isCorrect) {
