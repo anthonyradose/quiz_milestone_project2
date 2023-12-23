@@ -1,5 +1,4 @@
 /* globals Choices */
-
 // Initialize Choices.js with the class name
 const categoryDropdown = new Choices("#category", {
   searchEnabled: false,
@@ -40,7 +39,6 @@ const categoryDropdown = new Choices("#category", {
   },
   allowHTML: true,
 });
-
 const difficultyDropdown = new Choices("#difficulty", {
   searchEnabled: false,
   shouldSort: false,
@@ -77,10 +75,13 @@ const difficultyDropdown = new Choices("#difficulty", {
   allowHTML: true,
 });
 
+// State Variables:
 let currentQuestionIndex;
 let questions;
 let userScore;
 let isAnsweringAllowed; // Flag to control answering during question loading
+
+// Elements:
 const quizContainer = document.getElementById("quizContainer");
 const startButton = document.getElementById("startButton");
 const playAgainButton = document.getElementById("playAgainButton");
@@ -95,6 +96,7 @@ const quizSection = document.getElementById("quizSection");
 const categoryContainer = document.getElementById("categoryContainer");
 const difficultyContainer = document.getElementById("difficultyContainer");
 
+// Event Listeners:
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
   quizSection.style.display = "flex";
@@ -105,6 +107,7 @@ playAgainButton.addEventListener("click", initializeGameState);
 quitButton.addEventListener("click", quitGame);
 progressBar.style.display = "none";
 
+// Initialization:
 function initializeGameState() {
   currentQuestionIndex = 0;
   questions = null;
@@ -125,17 +128,134 @@ function initializeGameState() {
   quizContainer.innerHTML = "";
   quizContainer.style.display = "none";
 }
+
+// UI Functions:
 function hideStartElements() {
   categoryContainer.style.display = "none";
   difficultyContainer.style.display = "none";
   startButton.style.display = "none";
 }
-function displayLoader() {
-  loader.style.display = "block";
-  quizContainer.style.display = "block";
-  quizContainer.style.backgroundColor = "transparent";
+function displayLoader(showLoader) {
+  loader.style.display = showLoader ? "block" : "none";
+  if (showLoader) {
+    setTimeout(() => {
+      quizContainer.style.display = "block";
+      quizContainer.style.backgroundColor = "transparent";
+    }, 100); // Adjust the delay as needed
+  } else {
+    quizContainer.style.display = "block";
+    quizContainer.style.backgroundColor = "transparent";
+  }
+}
+function displayErrorMessage(message) {
+  const errorDiv = document.getElementById("error-message");
+  if (errorDiv) {
+    errorDiv.remove();
+  }
+
+  const newErrorDiv = document.createElement("div");
+  newErrorDiv.id = "error-message";
+  newErrorDiv.style.backgroundColor = "lightblue";
+  newErrorDiv.style.padding = "10px";
+  newErrorDiv.style.border = "1px solid blue";
+  newErrorDiv.style.position = "absolute";
+  newErrorDiv.style.top = "70%";
+  newErrorDiv.style.left = "50%";
+  newErrorDiv.style.transform = "translate(-50%, -50%)";
+  newErrorDiv.innerHTML = `<p>${message}</p>`;
+  document.body.appendChild(newErrorDiv);
 }
 
+// Game Functions:
+function startGame() {
+  hideStartElements();
+  displayLoader();
+  const apiUrl = buildApiUrlBasedOnSelection();
+  fetchQuestions(apiUrl);
+}
+function endGame() {
+  let icon;
+
+  if (userScore >= 7 && userScore <= 10) {
+    icon = "🏆"; // Trophy icon for high scores
+  } else if (userScore >= 4 && userScore <= 6) {
+    icon = "😐"; // Star icon for medium scores
+  } else {
+    icon = "💔"; // Confetti icon for low scores
+  }
+  quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10 ${icon}.</p>`;
+  quizContainer.style.backgroundColor = "lightblue";
+
+  progressBar.style.display = "none";
+  playAgainButton.style.display = "block";
+}
+function quitGame() {
+  progressBar.style.display = "none";
+  quitButton.style.display = "none";
+  quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
+  quizContainer.style.backgroundColor = "lightblue";
+
+  setTimeout(() => {
+    quizContainer.innerHTML = "";
+    initializeGameState();
+  }, 1000);
+}
+
+// API Functions:
+function fetchQuestions(apiUrl, retryCount = 3, retryDelay = 3000) {
+  const retry = (count) => {
+    if (count > 0) {
+      setTimeout(() => {
+        console.log(`Retrying... (Attempts left: ${count})`);
+        fetchQuestions(apiUrl, count - 1, retryDelay);
+      }, retryDelay);
+    } else {
+      console.error("Max retries reached. Could not fetch questions.");
+      displayErrorMessage(
+        "Sorry, there was an issue fetching questions. Please try again later."
+      );
+      loader.style.display = "none";
+    }
+  };
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      questions = data.results;
+
+      if (questions && questions.length > 0) {
+        isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
+        displayQuestion();
+      } else {
+        console.error("No questions loaded.");
+        retry(retryCount);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      if (error.response) {
+        console.error("HTTP Status Code:", error.response.status);
+        quizSection.innerHTML = `<p class="error-message">HTTP Status Code: ${error.response.status}</p>`;
+      }
+      console.error("Failed to load questions.");
+      retry(retryCount);
+    })
+    .finally(() => {
+      const answerListFetchQuestions = document.getElementById("answerList");
+      if (answerListFetchQuestions) {
+        answerListFetchQuestions.style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
+      }
+
+      // Clear the error message
+      const errorDiv = document.getElementById("error-message");
+      if (errorDiv) {
+        errorDiv.remove();
+      }
+
+      loader.style.display = "none"; // Hide the loader once questions are fetched
+    });
+}
 function buildApiUrlBasedOnSelection() {
   // Get selected category and difficulty
   const selectedCategory = categorySelect.value;
@@ -154,6 +274,11 @@ function buildApiUrlBasedOnSelection() {
     (selectedCategory === "26" && selectedDifficulty === "hard") ||
     (selectedCategory === "30" && selectedDifficulty === "hard")
   ) {
+    displayErrorMessage(
+      "Sorry, not enough questions with this combo. Difficulty = Any"
+    );
+    displayLoader(false); // Hide the loader in this case
+
     return `https://opentdb.com/api.php?amount=10&category=${selectedCategory}`;
   } else if (selectedCategory !== "any" && selectedDifficulty !== "any") {
     // Construct the API URL with the selected category and difficulty
@@ -166,48 +291,8 @@ function buildApiUrlBasedOnSelection() {
     return "https://opentdb.com/api.php?amount=10";
   }
 }
-function startGame() {
-  hideStartElements();
-  displayLoader();
-  const apiUrl = buildApiUrlBasedOnSelection();
-  fetchQuestions(apiUrl);
-}
 
-const fetchQuestions = (apiUrl) => {
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      questions = data.results;
-
-      if (questions && questions.length > 0) {
-        isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
-        displayQuestion();
-      } else {
-        console.error("No questions loaded.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      if (error.response) {
-        console.error("HTTP Status Code:", error.response.status);
-        quizSection.innerHTML = `<p class="error-message">HTTP Status Code: ${error.response.status}</p>`;
-      }
-      console.error("Failed to load questions. Retrying...");
-    })
-    .finally(() => {
-      loader.style.display = "none";
-      const answerListFetchQuestions = document.getElementById("answerList");
-      if (answerListFetchQuestions) {
-        answerListFetchQuestions.style.pointerEvents = "auto"; // Enable answer options after fetch (success or failure)
-      }
-    });
-};
-
-function capitalizeFirstLetter(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
+// Question Functions:
 function displayQuestion() {
   console.log("Displaying question:", currentQuestionIndex);
 
@@ -225,7 +310,6 @@ function displayQuestion() {
     progressBar.value = currentQuestionIndex;
   }
 }
-
 function createQuestionElement(question) {
   const questionElement = document.createElement("div");
   questionElement.id = "question-div";
@@ -248,7 +332,6 @@ function createQuestionElement(question) {
 
   return questionElement;
 }
-
 function createCategoryDifficultyDiv(question) {
   return `
     <div id="categoryDifficultyDiv"> 
@@ -261,7 +344,6 @@ function createCategoryDifficultyDiv(question) {
     </div>
   `;
 }
-
 function replaceQuestionMarkWithSVG(text) {
   return text.replace(
     "?",
@@ -270,7 +352,6 @@ function replaceQuestionMarkWithSVG(text) {
   `
   );
 }
-
 function createAnswerListHTML(answers) {
   const answerLabels = ["A", "B", "C", "D"];
   return answers
@@ -280,6 +361,7 @@ function createAnswerListHTML(answers) {
     .join("");
 }
 
+// Answer Handler Functions:
 function handleAnswer(event) {
   console.log("Handling answer:", event.target.textContent);
 
@@ -321,7 +403,6 @@ function handleAnswer(event) {
     }
   }
 }
-
 function displayFeedback(message) {
   console.log("Displaying feedback:", message);
 
@@ -351,23 +432,7 @@ function displayFeedback(message) {
   }, 3000); // Adjust the delay as needed
 }
 
-function endGame() {
-  let icon;
-
-  if (userScore >= 7 && userScore <= 10) {
-    icon = "🏆"; // Trophy icon for high scores
-  } else if (userScore >= 4 && userScore <= 6) {
-    icon = "😐"; // Star icon for medium scores
-  } else {
-    icon = "💔"; // Confetti icon for low scores
-  }
-  quizContainer.innerHTML += `<p>Quiz completed! Your score is ${userScore}/10 ${icon}.</p>`;
-  quizContainer.style.backgroundColor = "lightblue";
-
-  progressBar.style.display = "none";
-  playAgainButton.style.display = "block";
-}
-
+// Utility Functions:
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -375,15 +440,6 @@ function shuffleArray(array) {
   }
   return array;
 }
-
-function quitGame() {
-  progressBar.style.display = "none";
-  quitButton.style.display = "none";
-  quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
-  quizContainer.style.backgroundColor = "lightblue";
-
-  setTimeout(() => {
-    quizContainer.innerHTML = "";
-    initializeGameState();
-  }, 1000);
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
