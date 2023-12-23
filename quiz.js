@@ -1,3 +1,5 @@
+/* globals Choices */
+
 // Initialize Choices.js with the class name
 const categoryDropdown = new Choices("#category", {
   searchEnabled: false,
@@ -35,7 +37,6 @@ const categoryDropdown = new Choices("#category", {
     highlightedState: "is-highlighted",
     selectedState: "is-selected",
     flippedState: "is-flipped",
-    selectedState: "is-highlighted",
   },
   allowHTML: true,
 });
@@ -68,7 +69,6 @@ const difficultyDropdown = new Choices("#difficulty", {
     highlightedState: "is-highlighted",
     selectedState: "is-selected",
     flippedState: "is-flipped",
-    selectedState: "is-highlighted",
   },
   sorter: (a, b) => {
     const order = { any: 1, easy: 2, medium: 3, hard: 4 };
@@ -92,8 +92,8 @@ const progressBar = document.getElementById("progressBar");
 const startButtonLanding = document.getElementById("startButtonLanding");
 const landingPage = document.getElementById("landingPage");
 const quizSection = document.getElementById("quizSection");
-const categoryContainer = document.getElementById("categoryContainer")
-const difficultyContainer = document.getElementById("difficultyContainer")
+const categoryContainer = document.getElementById("categoryContainer");
+const difficultyContainer = document.getElementById("difficultyContainer");
 
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
@@ -112,8 +112,8 @@ function initializeGameState() {
   progressBar.value = 0;
   isAnsweringAllowed = false;
   startButton.style.display = "block";
-categoryContainer.style.display = "block";
-difficultyContainer.style.display = "block"
+  categoryContainer.style.display = "block";
+  difficultyContainer.style.display = "block";
   categorySelect.value = "any";
   difficultySelect.value = "any";
   categoryDropdown.setChoiceByValue("any");
@@ -135,6 +135,7 @@ function displayLoader() {
   quizContainer.style.display = "block";
   quizContainer.style.backgroundColor = "transparent";
 }
+
 function buildApiUrlBasedOnSelection() {
   // Get selected category and difficulty
   const selectedCategory = categorySelect.value;
@@ -166,10 +167,10 @@ function buildApiUrlBasedOnSelection() {
   }
 }
 function startGame() {
-hideStartElements()
-displayLoader()
-const apiUrl = buildApiUrlBasedOnSelection();
-fetchQuestions(apiUrl);
+  hideStartElements();
+  displayLoader();
+  const apiUrl = buildApiUrlBasedOnSelection();
+  fetchQuestions(apiUrl);
 }
 
 const fetchQuestions = (apiUrl) => {
@@ -212,45 +213,10 @@ function displayQuestion() {
 
   quitButton.style.display = "block";
   progressBar.style.display = "block";
+
   if (isAnsweringAllowed) {
-    // Check if answering is allowed before displaying the question
     const question = questions[currentQuestionIndex];
-    const questionElement = document.createElement("div");
-    questionElement.id = "question-div";
-    // Display selected category and difficulty if available
-    const categoryDifficultyDiv = `
-      <div id="categoryDifficultyDiv"> 
-        <p class="categoryDifficulty-p p-3" id="category-p">Category: ${
-          question.category
-        }</p> 
-        <p class="categoryDifficulty-p p-3" id="difficulty-p">Difficulty: ${capitalizeFirstLetter(
-          question.difficulty
-        )}</p>
-      </div>
-    `;
-
-    // Shuffle the answers
-    const shuffledAnswers = shuffleArray([
-      ...question.incorrect_answers,
-      question.correct_answer,
-    ]);
-
-    // Create an array of labels (a, b, c, d)
-    const answerLabels = ["A", "B", "C", "D"];
-
-    // Generate HTML for answer options with labels
-    const answerListHTML = shuffledAnswers
-      .map((answer, index) => {
-        return `<li class="answer-li m-3 p-3">${answerLabels[index]}. ${answer}</li>`;
-      })
-      .join("");
-
-    questionElement.innerHTML = `
-      ${categoryDifficultyDiv}
-      <p id="question-p">${question.question}</p>
-      <ul id="answerList">${answerListHTML}</ul>
-    `;
-
+    const questionElement = createQuestionElement(question);
     quizContainer.innerHTML = "";
     quizContainer.appendChild(questionElement);
 
@@ -258,6 +224,60 @@ function displayQuestion() {
     answerList.addEventListener("click", handleAnswer);
     progressBar.value = currentQuestionIndex;
   }
+}
+
+function createQuestionElement(question) {
+  const questionElement = document.createElement("div");
+  questionElement.id = "question-div";
+
+  const categoryDifficultyDiv = createCategoryDifficultyDiv(question);
+  const questionTextWithSVG = replaceQuestionMarkWithSVG(question.question);
+
+  // Shuffle the answers
+  const shuffledAnswers = shuffleArray([
+    ...question.incorrect_answers,
+    question.correct_answer,
+  ]);
+  const answerListHTML = createAnswerListHTML(shuffledAnswers);
+
+  questionElement.innerHTML = `
+    ${categoryDifficultyDiv}
+    <p id="question-p">${questionTextWithSVG}</p>
+    <ul id="answerList">${answerListHTML}</ul>
+  `;
+
+  return questionElement;
+}
+
+function createCategoryDifficultyDiv(question) {
+  return `
+    <div id="categoryDifficultyDiv"> 
+      <p class="categoryDifficulty-p p-3" id="category-p">Category: ${
+        question.category
+      }</p> 
+      <p class="categoryDifficulty-p p-3" id="difficulty-p">Difficulty: ${capitalizeFirstLetter(
+        question.difficulty
+      )}</p>
+    </div>
+  `;
+}
+
+function replaceQuestionMarkWithSVG(text) {
+  return text.replace(
+    "?",
+    `
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><circle cx="256" cy="256" r="256" fill="#0000ff" opacity="1" data-original="#ff2147" class=""></circle><g fill="#fff"><path d="M252.94 395.94h-25.38c-5.74 0-9.58-3.7-9.6-9.42 2.1-65.89-11.87-60.86 35.69-60.59 45.7-.33 32.19-4.8 34.29 59.78 0 6.71-3.51 10.23-10.17 10.24zM251.9 312c-8.28 0-16.56-.06-24.84 0-6.76.43-8.08-7.28-9-12.35-2.35-21.88 6.75-38.87 22.85-52.87 11.3-10.81 26.76-15.33 38.72-25.09 11.14-9.61 10-25.83-1.87-34.37-12.92-9.26-33.48-10.23-46.73-1.66-9.37 6.58-16.28 16.24-23.7 24.87-4.38 5.21-8.71 5.77-14.12 1.67q-17.05-12.92-34-25.93c-4.78-3.66-5.41-7.9-2.29-13 31.3-57.2 110.88-75.8 163.08-36 35 22.77 50.45 73.95 23.25 108.46-10.63 15-28.66 21.56-42.77 32.52C280.56 295 293 310.76 276.75 312H251.9z" fill="#ffffff" opacity="1" data-original="#ffffff"></path></g></g></g></svg>
+  `
+  );
+}
+
+function createAnswerListHTML(answers) {
+  const answerLabels = ["A", "B", "C", "D"];
+  return answers
+    .map((answer, index) => {
+      return `<li class="answer-li m-3 p-3">${answerLabels[index]}. ${answer}</li>`;
+    })
+    .join("");
 }
 
 function handleAnswer(event) {
@@ -357,7 +377,7 @@ function shuffleArray(array) {
 }
 
 function quitGame() {
-    progressBar.style.display = "none";
+  progressBar.style.display = "none";
   quitButton.style.display = "none";
   quizContainer.innerHTML = "<p>Game quit. Better luck next time!</p>";
   quizContainer.style.backgroundColor = "lightblue";
