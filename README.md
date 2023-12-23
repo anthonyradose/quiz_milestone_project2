@@ -170,21 +170,20 @@ Website Walkthrough -
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML) (was used for structuring and presenting content of the website)
 - [CSS](https://en.wikipedia.org/wiki/CSS) (used for the styling of the content)
-- [JS] (https://en.wikipedia.org/wiki/JS) (used for the interactivity of the content)
+- [JS](https://en.wikipedia.org/wiki/JS) (used for the interactivity of the content)
 - [Google Fonts](https://fonts.google.com/) (used for all the font styling within the project, font used was Roboto, and sans-serif for back-up)
 - [Bootstrap](https://www.bootstrapcdn.com/) (used for the responsiveness and additional styling)
 - [Open Trivia Database](https://opentdb.com/api_config.php) (used for the quiz questions)
 - [flaticon](https://www.flaticon.com/) (used for the various icons and loader)
 - [Chrome](https://www.google.com/intl/en_uk/chrome/) (used to debug and test the source code using HTML5 and to test site responsiveness)
 - [GitHub](https://github.com/) (used to create the repository and store the projects code after pushed from Git)
-- [Gitpod](https://www.gitpod.io/) (used for the editing of code within the project for the site)
-- [vscode](https://code.visualstudio.com/)
+- [Codeanywhere](https://codeanywhere.com/) (used for the editing of code within the project for the site)
+- [vscode](https://code.visualstudio.com/) 
 - [W3C Markup](https://validator.w3.org/) (used for validating the html5 code)
 - [Jigsaw Validator](https://jigsaw.w3.org/css-validator/) (used for validating the CSS code)
 - [Webaim Contrast Checker](https://webaim.org/resources/contrastchecker/) (Used for validating color contrast for accessibility)
 - [Choices.js](https://github.com/Choices-js/Choices)(Used for customized select dropdowns)
-- [Jest] (https://jestjs.io/) (Used for JavaScript Testing)
-- [Jshint] (https://jshint.com/) (Used for JavaScript validation)
+- [Jshint](https://jshint.com/) (Used for JavaScript validation)
 - [Am I Responsive?](https://ui.dev/amiresponsive)(Used for responsiveness testing)
 
 ---
@@ -237,37 +236,15 @@ No errors were found.
 
 No errors were found.
 
-### Manual Testing
-
-**Functionality Testing:**
-
-1. Landing Page:
-
-Verify that the "Start Quiz" button on the landing page initiates the quiz adventure. 2. Category and Difficulty Selection:
-
-Test the category and difficulty dropdown menus to ensure they display options correctly and allow the user to make selections before starting a quiz. 3. Quiz Interface:
-
-Start a quiz with different category and difficulty selections to confirm that questions load correctly, and the user can answer them. 4. Answering Questions:
-
-Click on various answer options during a quiz to check if the feedback is displayed accurately and in real-time. 5. Progress Bar:
-
-Confirm that the progress bar updates as the user progresses through the quiz, providing a visual representation of completion. 6. Category and Difficulty Display:
-
-Verify that at the beginning of each question, the selected category and difficulty level are displayed correctly. 7. End of Quiz:
-
-Complete a quiz and review the summary to ensure it accurately reflects the user's performance. Check if the play again and quit options function as expected. 8. Error Handling:
-
-Intentionally provide incorrect answers and verify that the app handles errors gracefully, providing clear messages to the user.
-
 **Usability Testing:**
-Check that the app is accessible, including testing with screen readers, to ensure it complies with accessibility standards.
+(Checked that the app is accessible, including testing with screen readers, to ensure it complies with accessibility standards.)
 
 **Responsiveness Testing:**
-Test the application on various devices and screen sizes to ensure a consistent and user-friendly experience.
+(Tested the application on various devices and screen sizes to ensure a consistent and user-friendly experience.)
 
 ---
 
-### Auto Testing
+**Functionality Testing:**
 
 #### Category Dropdown
 
