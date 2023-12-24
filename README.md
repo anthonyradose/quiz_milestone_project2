@@ -31,7 +31,7 @@ This project seeks to create an immersive quiz experience that goes beyond tradi
 
 1. As a user, I want to explore a diverse range of quiz topics, providing an engaging and challenging experience for continuous learning and knowledge testing.
 
-![](screenshot)
+![](https://live.staticflickr.com/65535/53418861091_c2aee1a489_w.jpg)
 
 2. As a user, I want a seamless and intuitive quiz navigation, allowing me to easily progress through questions and interact with the platform effortlessly.
 
@@ -39,11 +39,11 @@ This project seeks to create an immersive quiz experience that goes beyond tradi
 
 3. As a user, I want informative feedback on my quiz performance, providing insights into correct and incorrect answers, enhancing my understanding of various topics.
 
-![](screenshot)
+![](https://live.staticflickr.com/65535/53417940897_109169f1d6_w.jpg)
 
 4. As a user, I want to customize my quiz experience, with options to select specific categories and difficulty levels tailored to my preferences and knowledge level.
 
-![](screenshot)
+![](https://live.staticflickr.com/65535/53419027738_fa110d0254_w.jpg)
 
 5. As a user, I want to experience visually appealing and interactive quiz elements, creating an immersive and enjoyable atmosphere during my knowledge exploration.
 
@@ -51,21 +51,9 @@ This project seeks to create an immersive quiz experience that goes beyond tradi
 
 6. As a user, I want the quiz platform to offer a variety of question formats, keeping the experience dynamic and preventing monotony in the learning process.
 
-![](screenshot)
+![](https://live.staticflickr.com/65535/53419027743_fd20e0fb47_w.jpg) ![](https://live.staticflickr.com/65535/53417940857_d1d8ba1f9f_w.jpg)
 
 7. As a user, I want a responsive and well-designed user interface, ensuring a pleasant and accessible quiz experience across different devices.
-
-![](screenshot)
-
-8. As a user, I want a shareable and competitive aspect to the quiz, enabling me to challenge friends, track my progress, and compare scores with other users.
-
-![](screenshot)
-
-9. As a user, I want access to additional resources or explanations for quiz questions, facilitating a deeper understanding of the topics covered in the quizzes.
-
-![](screenshot)
-
-10. As a user, I want the quiz platform to provide regular updates and new content, keeping the experience fresh, engaging, and encouraging continuous participation.
 
 ![](screenshot)
 
@@ -190,57 +178,39 @@ Website Walkthrough -
 
 ## Testing
 
-I used Lighthouse in Chrome DevTools to analyze the performance, accessibility, and adherence to SEO and Best Practices.
+### Principles Of Testing
 
-| Landing Page:                 |     |
-| ----------------------------- | --- |
-| ![LANDING PAGE D](screenshot) |
+Automated testing offers repeatability, consistency, efficiency, and is best suited for regression testing, large test suites, frequent execution, and performance testing. 
 
-| Game Menu:                 |     |
-| -------------------------- | --- |
-| ![GAME MENU D](screenshot) |
+Manual testing excels in user experience evaluation, usability testing, complex scenarios, and initial testing. 
 
-| Loading Screen:                 |     |
-| ------------------------------- | --- |
-| ![LOADING SCREEN D](screenshot) |
-
-| Gameplay:                 |     |
-| ------------------------- | --- |
-| ![GAMEPLAY D](screenshot) |
-
-| Quit Game:                 |     |
-| -------------------------- | --- |
-| ![QUIT GAME D](screenshot) |
-
-| End Game:                |     |
-| ------------------------ | --- |
-| ![ENDGAME D](screenshot) |
-
-| Play Again:                 |     |
-| --------------------------- | --- |
-| ![PLAY AGAIN D](screenshot) |
+A balanced approach, leveraging both automated and manual testing, ensures comprehensive coverage throughout the development process.
+ 
+Automated testing suits repetitive tasks, while manual testing is valuable for scenarios requiring human intuition and creativity.
 
 ### HTML Validation
 
-No errors were found.
+Only minor errors found.
 
-![HTMLValidation](screenshot)
+![HTMLValidation](https://live.staticflickr.com/65535/53418861146_2a994fbbfe_b.jpg)
 
 ### CSS Validation
 
-![CSSValidation](screenshot)
+No errors were found
+
+![CSSValidation](https://live.staticflickr.com/65535/53418861141_b63614d4e1_z.jpg)
 
 ### JS Validation
 
-![JSValidation](screenshot)
-
 No errors were found.
 
+![JSValidation](https://live.staticflickr.com/65535/53419027848_effa4f7b5c_c.jpg) ![JSValidation](https://live.staticflickr.com/65535/53417940977_484a0afdc1_c.jpg) ![JSValidation](https://live.staticflickr.com/65535/53417940952_af436dc175_c.jpg) ![JSValidation](https://live.staticflickr.com/65535/53419183319_14627fb3a0_c.jpg) ![JSValidation](https://live.staticflickr.com/65535/53418861116_978e9c006f_z.jpg) ![JSValidation](https://live.staticflickr.com/65535/53417940922_8c3870fb4c_b.jpg) ![JSValidation](https://live.staticflickr.com/65535/53419027778_8d6ca98f7d_c.jpg)
+
 **Usability Testing:**
-(Checked that the app is accessible, including testing with screen readers, to ensure it complies with accessibility standards.)
+Checked that the app is accessible, including testing with screen readers, to ensure it complies with accessibility standards.
 
 **Responsiveness Testing:**
-(Tested the application on various devices and screen sizes to ensure a consistent and user-friendly experience.)
+Tested the application on various devices and screen sizes to ensure a consistent and user-friendly experience.
 
 ---
 
