@@ -1,4 +1,7 @@
-// Answer Handler Functions:
+/**
+ * Handles user-selected answers, checks correctness, and updates the UI with feedback.
+ * @param {Event} event - The click event on an answer option.
+ */
 function handleAnswer(event) {
   console.log("Handling answer:", event.target.textContent);
 
@@ -17,12 +20,18 @@ function handleAnswer(event) {
       : `<img src="./assets/icons/incorrect.svg" alt="Incorrect Icon">
         Incorrect. The correct answer is: ${correctAnswer}`;
     displayFeedback(feedbackMessage);
+
     // Update the user's score
     if (isCorrect) {
       userScore++;
     }
   }
 }
+
+/**
+ * Displays feedback message, removes existing elements, and schedules the next question or quiz end.
+ * @param {string} message - The feedback message to be displayed.
+ */
 function displayFeedback(message) {
   quitButton.style.display = "none";
   console.log("Displaying feedback:", message);
@@ -31,7 +40,6 @@ function displayFeedback(message) {
   feedbackElement.id = "feedbackDiv";
 
   feedbackElement.innerHTML = message;
-  feedbackElement.style.color = "black"; // Set font color to black for visibility
 
   // Clear the existing feedback elements
   quizContainer.innerHTML = "";
@@ -50,28 +58,19 @@ function displayFeedback(message) {
     } else {
       endGame();
     }
-  }, 3000); // Adjust the delay as needed
+  }, 3000);
 }
 
+/**
+ * Displays error messages to the user.
+ * @param {string} message - The error message to be displayed.
+ */
 function displayErrorMessage(message) {
-  const errorDiv = document.getElementById("error-message");
   if (errorDiv) {
     errorDiv.remove();
   }
 
-  const newErrorDiv = document.createElement("div");
   newErrorDiv.id = "error-message";
-  newErrorDiv.style.backgroundColor = "lightblue";
-  newErrorDiv.style.color = "black";
-  newErrorDiv.style.padding = "1rem";
-  newErrorDiv.style.border = "1px solid blue";
-  newErrorDiv.style.position = "absolute";
-  newErrorDiv.style.top = "70%";
-  newErrorDiv.style.left = "50%";
-  newErrorDiv.style.border = "none";
-  newErrorDiv.style.borderRadius = "2px";
-  newErrorDiv.style.transform = "translate(-50%, -50%)";
   newErrorDiv.innerHTML = `<p class="m-0">${message}</p>`;
   document.body.appendChild(newErrorDiv);
 }
-

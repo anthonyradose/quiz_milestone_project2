@@ -1,20 +1,28 @@
-// API Functions:
-function fetchQuestions(apiUrl, retryCount = 3, retryDelay = 3000) {
-  isLoadingQuestions = true;
+/**
+ * Fetches questions from the specified API URL.
+ *
+ * @param {string} apiUrl - The URL to fetch questions from.
+ * @param {number} [retryCount=3] - The number of retry attempts in case of failure.
+ * @param {number} [retryDelay=1000] - The delay (in milliseconds) between retry attempts.
+ */
+function fetchQuestions(apiUrl, retryCount = 3, retryDelay = 1000) {
+  /**
+   * Retries fetching questions in case of failure.
+   *
+   * @param {number} count - The number of retry attempts left.
+   */
   const retry = (count) => {
     if (count > 0) {
       setTimeout(() => {
-
         console.log(`Retrying... (Attempts left: ${count})`);
         fetchQuestions(apiUrl, count - 1, retryDelay);
-
       }, retryDelay);
     } else {
       console.error("Max retries reached. Could not fetch questions.");
       displayErrorMessage(
         "Sorry, there was an issue fetching questions. Please try again later."
       );
-loader.style.display = "none";
+      loader.style.display = "none";
     }
   };
 
@@ -27,7 +35,7 @@ loader.style.display = "none";
       if (questions && questions.length > 0) {
         isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
         displayQuestion();
-              } else {
+      } else {
         console.error("No questions loaded.");
         retry(retryCount);
       }
@@ -38,8 +46,8 @@ loader.style.display = "none";
         console.error("HTTP Status Code:", error.response.status);
         quizSection.innerHTML = `<p class="error-message">HTTP Status Code: ${error.response.status}</p>`;
       }
-           console.error("Failed to load questions.");
-      retry(retryCount);
+      console.error("Failed to load questions.");
+      setTimeout(() => retry(retryCount), retryDelay); // Introduce a delay before retrying
     })
     .finally(() => {
       const answerListFetchQuestions = document.getElementById("answerList");
@@ -55,19 +63,21 @@ loader.style.display = "none";
 
       loader.style.display = "none"; // Hide the loader once questions are fetched
     });
-  }
+}
+
+/**
+ * Builds the API URL based on the user's category and difficulty selection.
+ *
+ * @returns {string} - The constructed API URL.
+ */
 function buildApiUrlBasedOnSelection() {
   // Get selected category and difficulty
   const selectedCategory = categorySelect.value;
   const selectedDifficulty = difficultySelect.value;
   categorySelect.disabled = true;
   difficultySelect.disabled = true;
-  // Check if the user has made a selection
-  // Exceptional Cases due to lack of questions in api for a particular combo of difficulty & category:
-  // Art - hard
-  // Celebrities - hard
-  // Gadgets - hard
-  // Musicals & Theatre - easy
+
+  // Check exceptional cases due to lack of questions in the API for a particular combo of difficulty & category
   if (
     (selectedCategory === "13" && selectedDifficulty === "easy") ||
     (selectedCategory === "25" && selectedDifficulty === "hard") ||

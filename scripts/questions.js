@@ -1,10 +1,8 @@
-// Question Functions:
+/**
+ * Displays a new question on the UI, initializing the UI components for the question.
+ */
 function displayQuestion() {
-
-  quitButton.style.display = "block";
-  progressBar.style.display = "block";
-  worldQuizLogo.style.height = "100px";
-  worldQuizLogo.style.width = "100px";
+  initializeUIForQuestion();
 
   if (isAnsweringAllowed) {
     const question = questions[currentQuestionIndex];
@@ -17,6 +15,12 @@ function displayQuestion() {
     progressBar.value = currentQuestionIndex;
   }
 }
+
+/**
+ * Creates a question element with category, difficulty, and answer options.
+ * @param {Object} question - The question object containing category, difficulty, and answers.
+ * @returns {HTMLElement} The HTML element representing the question.
+ */
 function createQuestionElement(question) {
   const questionElement = document.createElement("div");
   questionElement.id = "question-div";
@@ -39,6 +43,12 @@ function createQuestionElement(question) {
 
   return questionElement;
 }
+
+/**
+ * Creates a div containing category and difficulty information.
+ * @param {Object} question - The question object containing category and difficulty information.
+ * @returns {string} The HTML string representing the category and difficulty div.
+ */
 function createCategoryDifficultyDiv(question) {
   return `
       <div id="categoryDifficultyDiv"> 
@@ -51,15 +61,26 @@ function createCategoryDifficultyDiv(question) {
       </div>
     `;
 }
+
+/**
+ * Replaces the question mark in the text with a question mark SVG icon.
+ * @param {string} text - The text containing a question mark to be replaced.
+ * @returns {string} The updated text with the question mark replaced by an SVG icon.
+ */
 function replaceQuestionMarkWithSVG(text) {
   return text.replace(
     "?",
     `
      <img src="./assets/icons/question-mark.svg" alt="Question Icon">
-  
     `
   );
 }
+
+/**
+ * Creates HTML for the answer options based on shuffled answers.
+ * @param {string[]} answers - The array of shuffled answer options.
+ * @returns {string} The HTML string representing the answer options list.
+ */
 function createAnswerListHTML(answers) {
   const answerLabels = ["A", "B", "C", "D"];
   return answers

@@ -1,7 +1,15 @@
+/* General Styles */
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f8f8ff;
 }
+h1 {
+  color: #21597d;
+}
+.hidden {
+  display: none;
+}
+/* Landing Page Styles */
 #landingPage {
   height: 90vh;
   display: flex;
@@ -9,6 +17,36 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
+.p-subheading {
+  font-size: 1.3em;
+  color: #21597d;
+}
+#p-description-div {
+  color: white;
+  border-radius: 4px;
+  box-shadow: -1px 1px 0px 3px #3f597d;
+  background-color: #5d748a;
+  width: 70%;
+}
+.p-description {
+  font-size: 1.1em;
+}
+#startButtonLanding {
+  font-size: 1em;
+  background: #ffa500;
+  box-shadow: -1px 1px 0px 3px #3f597d;
+  color: #122e45;
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+#startButtonLanding:hover {
+  background-color: #ff8c00;
+  color: #0e2034;
+}
+#startButtonLanding:active {
+  box-shadow: -1px 0px 0px 1px #3f597d;
+}
+/* Logo styles */
 .logo-div {
   width: 100%;
   display: flex;
@@ -21,50 +59,42 @@ body {
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
-.p-subheading {
-  font-size: 1.3em;
-  color: #21597d;
+.logo-link:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
-label {
-  color: #19405d;
+#worldLogo {
+  height: 150px;
+  width: 150px;
 }
-#p-description-div {
-  color: white;
-  border-radius: 4px;
-  box-shadow: -1px 1px 0px 3px #3f597d;
-  background-color: #5d748a;
-  width: 70%;
-}
-.p-description {
-  font-size: 1.1em;
+#worldQuizLogo {
+  height: 150px;
+  width: 150px;
 }
 
-#startButtonLanding {
-  font-size: 1em;
-  background: #ffa500;
-  box-shadow: -1px 1px 0px 3px #3f597d;
-  color: #122E45;
-  transition: transform 0.2s ease-in-out;
-  border: none;
+/* Quiz Section Styles */
+#quizSection {
+  height: 90vh;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
-#startButtonLanding:hover {
-  background-color: #ff8c00;
-  color: #0E2034;
-}
-#startButtonLanding:active {
-  box-shadow: -1px 0px 0px 1px #3f597d;
+#quizContainer {
+  border-radius: 4px;
+  padding: 1rem;
 }
 #startButton {
   font-size: 1em;
   background: #ffa500;
   box-shadow: -1px 1px 0px 3px #3f597d;
-  color: #122E45;
+  color: #122e45;
   transition: transform 0.2s ease-in-out;
   border: none;
 }
 #startButton:hover {
   background-color: #ff8c00;
-  color: #0E2034;
+  color: #0e2034;
 }
 #startButton:active {
   box-shadow: -1px 0px 0px 2px #21597d;
@@ -73,56 +103,17 @@ label {
   font-size: 1em;
   background: #ffa500;
   box-shadow: -1px 1px 0px 3px #3f597d;
-  color: #122E45;
+  color: #122e45;
   transition: transform 0.2s ease-in-out;
   border: none;
 }
 #playAgainButton:hover {
   background-color: #ff8c00;
-  color: #0E2034;
+  color: #0e2034;
 }
 #playAgainButton:active {
   box-shadow: -1px 0px 0px 2px #21597d;
 }
-
-.logo-link:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-#loader {
-  display: none;
-  text-align: center;
-}
-#loader img {
-  animation: rotate 2s linear infinite; /* Adjust the duration as needed */
-}
-#loader-p {
-  color: #19405d
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.hidden {
-  display: none;
-}
-h1 {
-  color: #21597d;
-}
-
-#quizSection {
-  height: 90vh;
-  display: none;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-
 #quitButton {
   box-shadow: -1px 1px 0px 3px #5d748a;
   background-color: #3f597d;
@@ -137,53 +128,36 @@ h1 {
 #quitButton:active {
   box-shadow: -1px 0px 0px 1px #21597d;
 }
-
-#categoryContainer,
-#difficultyContainer {
-  min-width: 350px;
-  position: relative;
-}
-
-.custom-choices {
+#error-message {
   background-color: #add8e6;
   color: black;
-}
-
-.custom-dropdown {
-  background-color: #add8e6;
-  border-radius: 8px;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: black;
-}
-
-.choices .choices__list .option-el {
-  background-color: #add8e6;
-  color: black;
-}
-
-.custom-choices.is-open .choices__list .option-el,
-.custom-choices.is-open .choices__list .option-el:focus {
-  background-color: #add8e6;
-  color: black;
-}
-.custom-choices.is-open .choices__list .option-el:hover {
-  background-color: #b7e546;
-  color: black;
-}
-
-#question-div {
-}
-#categoryDifficultyDiv {
-}
-.categoryDifficulty-p {
-  background: #add8e6;
+  padding: 1rem;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  border: none;
   border-radius: 2px;
-  color: black;
+  transform: translate(-50%, -50%);
 }
-#category-p {
+#loader {
+  display: none;
+  text-align: center;
 }
-#difficulty-p {
+#loader img {
+  animation: rotate 2s linear infinite; /* Adjust the duration as needed */
 }
+#loader-p {
+  color: #19405d;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Question and Answer Styles */
 #question-p {
   color: black;
 }
@@ -195,18 +169,16 @@ h1 {
   background-color: #b7e546;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
   border-radius: 2px;
-color: black;
+  color: black;
   cursor: pointer;
   margin: 1rem 1rem;
   transition: margin 0.1s ease-in-out; /* Add a smooth transition effect for the margin change */
-
 }
 .answer-li:hover {
   background-color: #abd641;
   color: black;
   margin: 1rem 0.75rem;
 }
-
 #feedbackDiv {
   border-radius: 4px;
   background-color: #add8e6;
@@ -214,23 +186,40 @@ color: black;
   padding: 1rem;
 }
 
-#quizContainer {
-  border-radius: 4px;
-  padding: 1rem;
+/* Dropdown Styles */
+label {
+  color: #19405d;
 }
-
-#worldLogo {
-  height: 150px;
-  width: 150px;
+#categoryContainer,
+#difficultyContainer {
+  min-width: 350px;
+  position: relative;
 }
-#worldQuizLogo {
-  height: 150px;
-  width: 150px;
+.custom-choices {
+  background-color: #add8e6;
+  color: black;
 }
-
-/* Extra small	None	<576px
-Small	sm	≥576px
-Medium	md	≥768px
-Large	lg	≥992px
-Extra large	xl	≥1200px
-Extra extra large	xxl	≥1400px */
+.custom-dropdown {
+  background-color: #add8e6;
+  border-radius: 8px;
+  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  color: black;
+}
+.choices .choices__list .option-el {
+  background-color: #add8e6;
+  color: black;
+}
+.custom-choices.is-open .choices__list .option-el,
+.custom-choices.is-open .choices__list .option-el:focus {
+  background-color: #add8e6;
+  color: black;
+}
+.custom-choices.is-open .choices__list .option-el:hover {
+  background-color: #b7e546;
+  color: black;
+}
+.categoryDifficulty-p {
+  background: #add8e6;
+  border-radius: 2px;
+  color: black;
+}

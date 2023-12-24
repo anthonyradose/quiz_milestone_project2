@@ -1,5 +1,8 @@
 /* globals Choices */
-// Initialize Choices.js with the class name
+/**
+ * Initializes Choices.js dropdown for category selection.
+ * @type {Choices}
+ */
 const categoryDropdown = new Choices("#category", {
   searchEnabled: false,
   sorter: (a, b) => {
@@ -39,6 +42,10 @@ const categoryDropdown = new Choices("#category", {
   },
   allowHTML: true,
 });
+/**
+ * Initializes Choices.js dropdown for difficulty selection.
+ * @type {Choices}
+ */
 const difficultyDropdown = new Choices("#difficulty", {
   searchEnabled: false,
   shouldSort: false,
@@ -95,7 +102,9 @@ const landingPage = document.getElementById("landingPage");
 const quizSection = document.getElementById("quizSection");
 const categoryContainer = document.getElementById("categoryContainer");
 const difficultyContainer = document.getElementById("difficultyContainer");
-const worldQuizLogo = document.getElementById("worldQuizLogo")
+const worldQuizLogo = document.getElementById("worldQuizLogo");
+const errorDiv = document.getElementById("error-message");
+const newErrorDiv = document.createElement("div");
 // Event Listeners:
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
@@ -107,7 +116,9 @@ playAgainButton.addEventListener("click", initializeGameState);
 quitButton.addEventListener("click", quitGame);
 progressBar.style.display = "none";
 
-// Initialization:
+/**
+ * Initializes the game state.
+ */
 function initializeGameState() {
   currentQuestionIndex = 0;
   questions = null;
@@ -128,5 +139,5 @@ function initializeGameState() {
   quizContainer.innerHTML = "";
   quizContainer.style.display = "none";
   worldQuizLogo.style.height = "150px";
-  worldQuizLogo.style.width = "150px"
+  worldQuizLogo.style.width = "150px";
 }

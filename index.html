@@ -65,7 +65,7 @@
       </div>
  <!-- Category Dropdown -->
  <div class="form-group" id="categoryContainer">
-  <img src="./assets/icons/book.svg" alt="Book Icon">
+  <img class="mb-3 me-1" src="./assets/icons/book.svg" alt="Book Icon">
 
   <label for="category">Select Category:</label>
   <select class="form-control" id="category">
@@ -98,7 +98,7 @@
 
 <!-- Difficulty Dropdown -->
 <div class="form-group" id="difficultyContainer">
-  <img src="./assets/icons/speedometer.svg" alt="Speedometer Icon" >
+  <img class="mb-3 me-1" src="./assets/icons/speedometer.svg" alt="Speedometer Icon" >
   <label for="difficulty">Select Difficulty:</label>
   <select class="form-control" id="difficulty">
     <option value="any" selected >--Any Difficulty--</option>
@@ -107,15 +107,15 @@
     <option value="hard">Hard</option>
   </select>
 </div>
-
+    <!-- Start and Play Again Buttons -->
       <button class="btn btn-primary" id="startButton">Start Game</button>
       <button class="btn btn-primary" id="playAgainButton" style="display: none">Play Again</button>
-      <!-- <div id="loader" class="hidden">Loading...</div> -->
+        <!-- Loader -->
       <div id="loader" class="hidden m-3">
         <p id="loader-p" class="m-3">Loading...</p>
         <img src="./assets/icons/spinner.svg" alt="Loading Animation">
       </div>
-      
+          <!-- Quiz Container, Progress Bar, and Quit Button -->
       <div id="quizContainer" class="mt-3"></div>
       <progress
         id="progressBar"
@@ -126,6 +126,7 @@
       ></progress>
       <button class="btn btn-danger mt-3" id="quitButton">Quit</button>
     </div>
+      <!-- External Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 <script src="scripts/handlers.js"></script>
 <script  src="scripts/utilities.js"></script>
