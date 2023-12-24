@@ -33,27 +33,19 @@ This project seeks to create an immersive quiz experience that goes beyond tradi
 
 ![](https://live.staticflickr.com/65535/53418861091_c2aee1a489_w.jpg)
 
-2. As a user, I want a seamless and intuitive quiz navigation, allowing me to easily progress through questions and interact with the platform effortlessly.
-
-![](screenshot)
-
-3. As a user, I want informative feedback on my quiz performance, providing insights into correct and incorrect answers, enhancing my understanding of various topics.
+2. As a user, I want informative feedback on my quiz performance, providing insights into correct and incorrect answers, enhancing my understanding of various topics.
 
 ![](https://live.staticflickr.com/65535/53417940897_109169f1d6_w.jpg)
 
-4. As a user, I want to customize my quiz experience, with options to select specific categories and difficulty levels tailored to my preferences and knowledge level.
+3. As a user, I want to customize my quiz experience, with options to select specific categories and difficulty levels tailored to my preferences and knowledge level.
 
 ![](https://live.staticflickr.com/65535/53419027738_fa110d0254_w.jpg)
 
-5. As a user, I want to experience visually appealing and interactive quiz elements, creating an immersive and enjoyable atmosphere during my knowledge exploration.
-
-![](screenshot)
-
-6. As a user, I want the quiz platform to offer a variety of question formats, keeping the experience dynamic and preventing monotony in the learning process.
+4. As a user, I want the quiz platform to offer a variety of question formats, keeping the experience dynamic and preventing monotony in the learning process.
 
 ![](https://live.staticflickr.com/65535/53419027743_fd20e0fb47_w.jpg) ![](https://live.staticflickr.com/65535/53417940857_d1d8ba1f9f_w.jpg)
 
-7. As a user, I want a responsive and well-designed user interface, ensuring a pleasant and accessible quiz experience across different devices.
+5. As a user, I want a responsive and well-designed user interface, ensuring a pleasant and accessible quiz experience across different devices.
 
 ![](screenshot)
 
