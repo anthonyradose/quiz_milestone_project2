@@ -223,3 +223,27 @@ label {
   border-radius: 2px;
   color: black;
 }
+
+/* Media Queries */
+@media (max-width: 576px) {
+  #categoryContainer,
+  #difficultyContainer {
+    min-width: unset;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 480px) {
+  #landingPage {
+    height: unset;
+  }
+  #categoryContainer,
+  #difficultyContainer {
+    min-width: unset;
+  }
+  #startButton {
+    margin: 1rem;
+  }
+  #quizSection {
+    height: unset;
+  }
+}
