@@ -95,7 +95,7 @@ const landingPage = document.getElementById("landingPage");
 const quizSection = document.getElementById("quizSection");
 const categoryContainer = document.getElementById("categoryContainer");
 const difficultyContainer = document.getElementById("difficultyContainer");
-
+const worldQuizLogo = document.getElementById("worldQuizLogo")
 // Event Listeners:
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
@@ -127,10 +127,6 @@ function initializeGameState() {
   quitButton.style.display = "none";
   quizContainer.innerHTML = "";
   quizContainer.style.display = "none";
+  worldQuizLogo.style.height = "150px";
+  worldQuizLogo.style.width = "150px"
 }
-
-
-
-
-
-

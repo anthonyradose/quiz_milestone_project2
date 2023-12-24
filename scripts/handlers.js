@@ -44,7 +44,7 @@ function displayFeedback(message) {
 
     // Move to the next question or end the quiz after removing the feedback
     currentQuestionIndex++;
-    if (currentQuestionIndex < 10) {
+    if (currentQuestionIndex < 1) {
       displayQuestion();
     } else {
       endGame();
@@ -60,13 +60,16 @@ function displayErrorMessage(message) {
   const newErrorDiv = document.createElement("div");
   newErrorDiv.id = "error-message";
   newErrorDiv.style.backgroundColor = "lightblue";
-  newErrorDiv.style.padding = "10px";
+  newErrorDiv.style.color = "black"
+  newErrorDiv.style.padding = "1rem";
   newErrorDiv.style.border = "1px solid blue";
   newErrorDiv.style.position = "absolute";
   newErrorDiv.style.top = "70%";
   newErrorDiv.style.left = "50%";
+  newErrorDiv.style.border = "none";
+  newErrorDiv.style.borderRadius = "2px"
   newErrorDiv.style.transform = "translate(-50%, -50%)";
-  newErrorDiv.innerHTML = `<p>${message}</p>`;
+  newErrorDiv.innerHTML = `<p class="m-0">${message}</p>`;
   document.body.appendChild(newErrorDiv);
 }
 

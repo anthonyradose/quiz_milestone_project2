@@ -25,14 +25,14 @@ body {
   font-size: 1.3em;
   color: #21597d;
 }
-label{
-color: #19405D;
+label {
+  color: #19405d;
 }
 #p-description-div {
   color: white;
   border-radius: 4px;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  background-color: rgb(93, 116, 138);
+  box-shadow: -1px 1px 0px 3px #3f597d;
+  background-color: #5d748a;
   width: 70%;
 }
 .p-description {
@@ -41,34 +41,50 @@ color: #19405D;
 
 #startButtonLanding {
   font-size: 1em;
-  background: orange;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: #384766;
+  background: #ffa500;
+  box-shadow: -1px 1px 0px 3px #3f597d;
+  color: #122E45;
   transition: transform 0.2s ease-in-out;
   border: none;
 }
 #startButtonLanding:hover {
-  background-color: darkorange;
-  color: #323d58;
+  background-color: #ff8c00;
+  color: #0E2034;
 }
 #startButtonLanding:active {
-  box-shadow: -1px 0px 0px 1px rgb(63, 89, 125);
+  box-shadow: -1px 0px 0px 1px #3f597d;
 }
 #startButton {
   font-size: 1em;
-  background: orange;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: #384766;
+  background: #ffa500;
+  box-shadow: -1px 1px 0px 3px #3f597d;
+  color: #122E45;
   transition: transform 0.2s ease-in-out;
   border: none;
 }
 #startButton:hover {
-  background-color: darkorange;
-  color: #323d58;
+  background-color: #ff8c00;
+  color: #0E2034;
 }
 #startButton:active {
-  box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
+  box-shadow: -1px 0px 0px 2px #21597d;
 }
+#playAgainButton {
+  font-size: 1em;
+  background: #ffa500;
+  box-shadow: -1px 1px 0px 3px #3f597d;
+  color: #122E45;
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+#playAgainButton:hover {
+  background-color: #ff8c00;
+  color: #0E2034;
+}
+#playAgainButton:active {
+  box-shadow: -1px 0px 0px 2px #21597d;
+}
+
 .logo-link:hover {
   transform: scale(1.1);
   cursor: pointer;
@@ -80,8 +96,8 @@ color: #19405D;
 #loader img {
   animation: rotate 2s linear infinite; /* Adjust the duration as needed */
 }
-#loader-p{
-  color: #21597d;
+#loader-p {
+  color: #19405d
 }
 @keyframes rotate {
   from {
@@ -106,33 +122,20 @@ h1 {
   align-items: center;
 }
 
-#playAgainButton {
-  font-size: 1em;
-  background: orange;
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
-  color: rgb(63, 89, 125);
-  transition: transform 0.2s ease-in-out;
-  border: none;
-}
-#playAgainButton:active {
-  box-shadow: -1px 0px 0px 2px rgb(33, 89, 125);
-}
-#playAgainButton:hover {
-  background-color: darkorange;
-}
+
 #quitButton {
-  box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  box-shadow: -1px 1px 0px 3px #5d748a;
   background-color: #3f597d;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   transition: transform 0.2s ease-in-out;
   display: none;
 }
 #quitButton:hover {
-  background-color: rgb(93, 116, 138);
+  background-color: #344c6e;
 }
 #quitButton:active {
-  box-shadow: -1px 0px 0px 1px rgb(33, 89, 125);
+  box-shadow: -1px 0px 0px 1px #21597d;
 }
 
 #categoryContainer,
@@ -143,25 +146,29 @@ h1 {
 
 .custom-choices {
   background-color: #add8e6;
-  color: #19405D;
+  color: black;
 }
 
 .custom-dropdown {
   background-color: #add8e6;
   border-radius: 8px;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
+  color: black;
 }
 
 .choices .choices__list .option-el {
   background-color: #add8e6;
+  color: black;
 }
 
 .custom-choices.is-open .choices__list .option-el,
 .custom-choices.is-open .choices__list .option-el:focus {
   background-color: #add8e6;
+  color: black;
 }
 .custom-choices.is-open .choices__list .option-el:hover {
   background-color: #b7e546;
+  color: black;
 }
 
 #question-div {
@@ -171,15 +178,14 @@ h1 {
 .categoryDifficulty-p {
   background: #add8e6;
   border-radius: 2px;
-  color: #21597d;
-  border: 1px solid #21597d
+  color: black;
 }
 #category-p {
 }
 #difficulty-p {
 }
 #question-p {
-  color: #21597d;
+  color: black;
 }
 #answerList {
   list-style: none;
@@ -189,17 +195,22 @@ h1 {
   background-color: #b7e546;
   box-shadow: -1px 1px 0px 3px rgb(63, 89, 125);
   border-radius: 2px;
-  color: #3f597d;
+color: black;
   cursor: pointer;
+  margin: 1rem 1rem;
+  transition: margin 0.1s ease-in-out; /* Add a smooth transition effect for the margin change */
+
 }
 .answer-li:hover {
   background-color: #abd641;
-  color: #1F567A;
+  color: black;
+  margin: 1rem 0.75rem;
 }
 
 #feedbackDiv {
   border-radius: 4px;
   background-color: #add8e6;
+  color: black;
   padding: 1rem;
 }
 
@@ -208,8 +219,14 @@ h1 {
   padding: 1rem;
 }
 
-
-
+#worldLogo {
+  height: 150px;
+  width: 150px;
+}
+#worldQuizLogo {
+  height: 150px;
+  width: 150px;
+}
 
 /* Extra small	None	<576px
 Small	sm	≥576px
