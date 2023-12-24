@@ -24,6 +24,7 @@ function handleAnswer(event) {
   }
 }
 function displayFeedback(message) {
+  quitButton.style.display = "none";
   console.log("Displaying feedback:", message);
 
   const feedbackElement = document.createElement("div");
@@ -44,13 +45,14 @@ function displayFeedback(message) {
 
     // Move to the next question or end the quiz after removing the feedback
     currentQuestionIndex++;
-    if (currentQuestionIndex < 1) {
+    if (currentQuestionIndex < 10) {
       displayQuestion();
     } else {
       endGame();
     }
   }, 3000); // Adjust the delay as needed
 }
+
 function displayErrorMessage(message) {
   const errorDiv = document.getElementById("error-message");
   if (errorDiv) {
@@ -60,14 +62,14 @@ function displayErrorMessage(message) {
   const newErrorDiv = document.createElement("div");
   newErrorDiv.id = "error-message";
   newErrorDiv.style.backgroundColor = "lightblue";
-  newErrorDiv.style.color = "black"
+  newErrorDiv.style.color = "black";
   newErrorDiv.style.padding = "1rem";
   newErrorDiv.style.border = "1px solid blue";
   newErrorDiv.style.position = "absolute";
   newErrorDiv.style.top = "70%";
   newErrorDiv.style.left = "50%";
   newErrorDiv.style.border = "none";
-  newErrorDiv.style.borderRadius = "2px"
+  newErrorDiv.style.borderRadius = "2px";
   newErrorDiv.style.transform = "translate(-50%, -50%)";
   newErrorDiv.innerHTML = `<p class="m-0">${message}</p>`;
   document.body.appendChild(newErrorDiv);

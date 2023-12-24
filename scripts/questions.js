@@ -1,6 +1,5 @@
 // Question Functions:
 function displayQuestion() {
-  console.log("Displaying question:", currentQuestionIndex);
 
   quitButton.style.display = "block";
   progressBar.style.display = "block";

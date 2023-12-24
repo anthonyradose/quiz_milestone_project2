@@ -1,9 +1,25 @@
 // Game Functions:
 function startGame() {
+  
   hideStartElements();
   displayLoader();
   const apiUrl = buildApiUrlBasedOnSelection();
   fetchQuestions(apiUrl);
+}
+
+function quitGame() {
+  progressBar.style.display = "none";
+  quitButton.style.display = "none";
+  playAgainButton.style.display = "none"; // Hide the Play Again button
+  quizContainer.innerHTML =
+    "<p class='m-0'>Game quit. Better luck next time!</p>";
+  quizContainer.style.backgroundColor = "lightblue";
+  quizContainer.style.color = "black";
+
+  setTimeout(() => {
+    quizContainer.innerHTML = "";
+    initializeGameState();
+  }, 1000);
 }
 function endGame() {
   let icon;
@@ -23,17 +39,5 @@ function endGame() {
 
   progressBar.style.display = "none";
   playAgainButton.style.display = "block";
-}
-function quitGame() {
-  progressBar.style.display = "none";
-  quitButton.style.display = "none";
-  quizContainer.innerHTML =
-    "<p class='m-0'>Game quit. Better luck next time!</p>";
-  quizContainer.style.backgroundColor = "lightblue";
-  quizContainer.style.color = "black";
-
-  setTimeout(() => {
-    quizContainer.innerHTML = "";
-    initializeGameState();
-  }, 1000);
+  quitButton.style.display = "block"
 }

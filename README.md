@@ -353,13 +353,13 @@ No errors were found.
 
 | Test Case                                        | Expected Result                                        | Outcome |
 | ------------------------------------------------ | ------------------------------------------------------ | ------- |
-| Select "Celebrities" (Exception Case) and "Hard" | API URL should include category=26 and difficulty=any  |         |
+| Select "Celebrities" (Exception Case) and "Hard" | API URL should include category=26 and difficulty=any  | Pass    |
 
 #### Start Button Click
 
 | Test Case                                   | Expected Result                                                    | Outcome |
 | ------------------------------------------- | ------------------------------------------------------------------ | ------- |
-| Click "Start" button multiple times rapidly | Game should not start until the previous start action is completed |         |
+| Click "Start" button multiple times rapidly | Game should not start until the previous start action is completed | Pass    |
 
 
 #### Display Feedback Function - Timeout Adjustment
@@ -373,13 +373,13 @@ No errors were found.
 
 | Test Case                 | Expected Result                                                     | Outcome |
 | ------------------------- | ------------------------------------------------------------------- | ------- |
-| Input array of 4 elements | Output array should have the same elements but in a different order |         |
+| Input array of 4 elements | Output array should have the same elements but in a different order | Pass    |
 
 #### Quit Game Function
 
 | Test Case           | Expected Result                                                                                    | Outcome |
 | ------------------- | -------------------------------------------------------------------------------------------------- | ------- |
-| Click "Quit" button | Quiz container should display a message, and after a delay, the game state should be reinitialized |         |
+| Click "Quit" button | Quiz container should display a message, and after a delay, the game state should be reinitialized | Pass    |
 
 
 ## Deployment
