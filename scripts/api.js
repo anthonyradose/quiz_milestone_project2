@@ -29,7 +29,6 @@ function fetchQuestions(apiUrl, retryCount = 3, retryDelay = 1000) {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       questions = data.results;
 
       if (questions && questions.length > 0) {

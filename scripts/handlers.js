@@ -3,8 +3,6 @@
  * @param {Event} event - The click event on an answer option.
  */
 function handleAnswer(event) {
-  console.log("Handling answer:", event.target.textContent);
-
   if (isAnsweringAllowed && event.target.tagName === "LI") {
     const selectedAnswer = event.target.textContent.trim().substring(3); // Extract the answer text without the label
 
@@ -34,7 +32,6 @@ function handleAnswer(event) {
  */
 function displayFeedback(message) {
   quitButton.style.display = "none";
-  console.log("Displaying feedback:", message);
 
   const feedbackElement = document.createElement("div");
   feedbackElement.id = "feedbackDiv";
