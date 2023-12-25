@@ -12,7 +12,7 @@ This quiz app offers a dynamic experience, as you navigate through each question
 
 Thanks for choosing QuizWorld! Your adventure in the realm of quizzes begins here! Enjoy the journey, and happy quizzing!
 
-The live website can be found [here](https://anthonyradose.github.io/quiz_milestone_project2/s)
+The live website can be found [here](https://anthonyradose.github.io/quiz_milestone_project2/)
 
 ---
 
