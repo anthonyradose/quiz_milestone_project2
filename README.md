@@ -166,6 +166,8 @@ Website Walkthrough -
 
 ## Testing
 
+Testing was enacted during and after development, as documented in this README and the git commit messages.
+
 ### Principles Of Testing
 
 Automated testing offers repeatability, consistency, efficiency, and is best suited for regression testing, large test suites, frequent execution, and performance testing. 
