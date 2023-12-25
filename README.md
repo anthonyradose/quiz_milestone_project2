@@ -2,7 +2,7 @@ README:
 
 # QuizWorld
 
-![QuizWorld](amiresponsive img)
+![QuizWorld](https://live.staticflickr.com/65535/53419403955_0240d33140_c.jpg)
 
 Welcome to Quiz World!
 
@@ -12,7 +12,7 @@ This quiz app offers a dynamic experience, as you navigate through each question
 
 Thanks for choosing QuizWorld! Your adventure in the realm of quizzes begins here! Enjoy the journey, and happy quizzing!
 
-The live website can be found [here](live link to app)
+The live website can be found [here](https://anthonyradose.github.io/quiz_milestone_project2/s)
 
 ---
 
