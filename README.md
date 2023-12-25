@@ -245,7 +245,6 @@ Tested the application on various devices and screen sizes to ensure a consisten
 | Test Case                     | Expected Result                                                                                     | Outcome |
 | ----------------------------- | --------------------------------------------------------------------------------------------------- | ------- |
 | Fetch questions successfully  | Questions should be loaded, answering should be allowed, and the first question should be displayed | Pass    |
-| Fetch questions with an error | Error message should be displayed, and retry should be attempted                                    |         |
 
 #### Display Question Function
 
@@ -286,12 +285,6 @@ Tested the application on various devices and screen sizes to ensure a consisten
 | Test Case           | Expected Result                                                                                    | Outcome |
 | ------------------- | -------------------------------------------------------------------------------------------------- | ------- |
 | Click "Quit" button | Quiz container should display a message, and after a delay, the game state should be reinitialized | Pass    |
-
-#### Initialization State
-
-| Test Case                        | Expected Result                                                                                    | Outcome |
-| -------------------------------- | -------------------------------------------------------------------------------------------------- | ------- |
-| Load the page for the first time | Default state should be displayed (landing page visible, quiz section hidden, no game data loaded) |         |
 
 #### Initialize Game State Function
 
