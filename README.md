@@ -2,7 +2,7 @@ README:
 
 # QuizWorld
 
-![QuizWorld](https://live.staticflickr.com/65535/53419403955_0240d33140_c.jpg)
+![QuizWorld](https://live.staticflickr.com/65535/53419480710_4b5e8dbac2_z.jpg)
 
 Welcome to Quiz World!
 
