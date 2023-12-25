@@ -230,6 +230,10 @@ label {
   #difficultyContainer {
     min-width: unset;
   }
+  #worldLogo, #worldQuizLogo{
+    height: 100px !important;
+    width: 100px !important;
+  }
 }
 
 @media screen and (max-width: 320px) and (max-height: 480px) {
@@ -246,4 +250,5 @@ label {
   #quizSection {
     height: unset;
   }
+
 }
