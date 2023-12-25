@@ -45,10 +45,6 @@ This project seeks to create an immersive quiz experience that goes beyond tradi
 
 ![](https://live.staticflickr.com/65535/53419027743_fd20e0fb47_w.jpg) ![](https://live.staticflickr.com/65535/53417940857_d1d8ba1f9f_w.jpg)
 
-5. As a user, I want a responsive and well-designed user interface, ensuring a pleasant and accessible quiz experience across different devices.
-
-![](screenshot)
-
 ### Web Design -
 
 #### Visual Aesthetic:
@@ -69,31 +65,31 @@ The site's design and element placement have been illustrated using Balsamiq wir
 
 | Landing Page:               |     |
 | --------------------------- | --- |
-| ![Landing Page](screenshot) |     |
+| ![Landing Page](https://live.staticflickr.com/65535/53419216473_e47cd946e0_w.jpg) |     |
 
 | Game Menu:               |     |
 | ------------------------ | --- |
-| ![Game Menu](screenshot) |     |
+| ![Game Menu](https://live.staticflickr.com/65535/53419485365_fbae9b41a9_w.jpg) |     |
 
 | Gameplay Loading:               |     |
 | ------------------------------- | --- |
-| ![Gameplay Loading](screenshot) |     |
+| ![Gameplay Loading](https://live.staticflickr.com/65535/53418130477_733aa55e93_w.jpg) |     |
 
 | Gameplay:             |     |
 | --------------------- | --- |
-| ![Gameplay](Gameplay) |     |
+| ![Gameplay](https://live.staticflickr.com/65535/53418130507_a0cf11e5bd.jpg) |     |
 
 | Quit Game:                |     |
 | ------------------------- | --- |
-| ![Quite Game](screenshot) |     |
+| ![Quite Game](https://live.staticflickr.com/65535/53419371924_c40592feee_w.jpg) |     |
 
 | EndGame:               |     |
 | ---------------------- | --- |
-| ![EndGame](screenshot) |     |
+| ![EndGame](https://live.staticflickr.com/65535/53418130497_b60cd9c753_w.jpg) |     |
 
-| Play Again:               |     |
+| Answer Feedback:               |     |
 | ------------------------- | --- |
-| ![Play Again](screenshot) |     |
+| ![Play Again](https://live.staticflickr.com/65535/53418130492_ff1cc12fb5_w.jpg) |     |
 
 ---
 
