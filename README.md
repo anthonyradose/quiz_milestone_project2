@@ -2,7 +2,7 @@ README:
 
 # QuizWorld
 
-![QuizWorld](https://live.staticflickr.com/65535/53419403955_0240d33140_c.jpg)
+![QuizWorld](https://live.staticflickr.com/65535/53419480710_4b5e8dbac2_z.jpg)
 
 Welcome to Quiz World!
 
@@ -45,10 +45,6 @@ This project seeks to create an immersive quiz experience that goes beyond tradi
 
 ![](https://live.staticflickr.com/65535/53419027743_fd20e0fb47_w.jpg) ![](https://live.staticflickr.com/65535/53417940857_d1d8ba1f9f_w.jpg)
 
-5. As a user, I want a responsive and well-designed user interface, ensuring a pleasant and accessible quiz experience across different devices.
-
-![](screenshot)
-
 ### Web Design -
 
 #### Visual Aesthetic:
@@ -69,31 +65,31 @@ The site's design and element placement have been illustrated using Balsamiq wir
 
 | Landing Page:               |     |
 | --------------------------- | --- |
-| ![Landing Page](screenshot) |     |
+| ![Landing Page](https://live.staticflickr.com/65535/53419216473_e47cd946e0_w.jpg) |     |
 
 | Game Menu:               |     |
 | ------------------------ | --- |
-| ![Game Menu](screenshot) |     |
+| ![Game Menu](https://live.staticflickr.com/65535/53419485365_fbae9b41a9_w.jpg) |     |
 
 | Gameplay Loading:               |     |
 | ------------------------------- | --- |
-| ![Gameplay Loading](screenshot) |     |
+| ![Gameplay Loading](https://live.staticflickr.com/65535/53418130477_733aa55e93_w.jpg) |     |
 
 | Gameplay:             |     |
 | --------------------- | --- |
-| ![Gameplay](Gameplay) |     |
+| ![Gameplay](https://live.staticflickr.com/65535/53418130507_a0cf11e5bd.jpg) |     |
 
 | Quit Game:                |     |
 | ------------------------- | --- |
-| ![Quite Game](screenshot) |     |
+| ![Quite Game](https://live.staticflickr.com/65535/53419371924_c40592feee_w.jpg) |     |
 
 | EndGame:               |     |
 | ---------------------- | --- |
-| ![EndGame](screenshot) |     |
+| ![EndGame](https://live.staticflickr.com/65535/53418130497_b60cd9c753_w.jpg) |     |
 
-| Play Again:               |     |
+| Answer Feedback:               |     |
 | ------------------------- | --- |
-| ![Play Again](screenshot) |     |
+| ![Play Again](https://live.staticflickr.com/65535/53418130492_ff1cc12fb5_w.jpg) |     |
 
 ---
 
@@ -170,6 +166,8 @@ Website Walkthrough -
 
 ## Testing
 
+Testing was enacted during and after development, as documented in this README and the git commit messages.
+
 ### Principles Of Testing
 
 Automated testing offers repeatability, consistency, efficiency, and is best suited for regression testing, large test suites, frequent execution, and performance testing. 
@@ -245,7 +243,6 @@ Tested the application on various devices and screen sizes to ensure a consisten
 | Test Case                     | Expected Result                                                                                     | Outcome |
 | ----------------------------- | --------------------------------------------------------------------------------------------------- | ------- |
 | Fetch questions successfully  | Questions should be loaded, answering should be allowed, and the first question should be displayed | Pass    |
-| Fetch questions with an error | Error message should be displayed, and retry should be attempted                                    |         |
 
 #### Display Question Function
 
@@ -286,12 +283,6 @@ Tested the application on various devices and screen sizes to ensure a consisten
 | Test Case           | Expected Result                                                                                    | Outcome |
 | ------------------- | -------------------------------------------------------------------------------------------------- | ------- |
 | Click "Quit" button | Quiz container should display a message, and after a delay, the game state should be reinitialized | Pass    |
-
-#### Initialization State
-
-| Test Case                        | Expected Result                                                                                    | Outcome |
-| -------------------------------- | -------------------------------------------------------------------------------------------------- | ------- |
-| Load the page for the first time | Default state should be displayed (landing page visible, quiz section hidden, no game data loaded) |         |
 
 #### Initialize Game State Function
 
