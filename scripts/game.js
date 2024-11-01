@@ -3,10 +3,14 @@
  * building the API URL based on user selection, and fetching questions.
  */
 function startGame() {
+ 
   hideStartElements();
   displayLoader();
   const apiUrl = buildApiUrlBasedOnSelection();
-  fetchQuestions(apiUrl);
+  if(displayErrorMessage) {
+    setTimeout(() => {fetchQuestions(apiUrl);}, 3000);
+  }
+  else fetchQuestions(apiUrl);
 }
 
 /**

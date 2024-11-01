@@ -66,7 +66,6 @@ function displayErrorMessage(message) {
   if (errorDiv) {
     errorDiv.remove();
   }
-
   newErrorDiv.id = "error-message";
   newErrorDiv.innerHTML = `<p class="m-0">${message}</p>`;
   document.body.appendChild(newErrorDiv);

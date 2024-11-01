@@ -84,7 +84,7 @@ function buildApiUrlBasedOnSelection() {
     (selectedCategory === "30" && selectedDifficulty === "hard")
   ) {
     displayErrorMessage(
-      "Sorry, not enough questions with this combo. Difficulty = Any"
+      "Sorry, not enough questions with this combo. Setting difficulty to any."
     );
     displayLoader(false); // Hide the loader in this case
 
