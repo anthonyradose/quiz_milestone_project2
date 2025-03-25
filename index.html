@@ -33,7 +33,11 @@
         <a class="logo-link">
           <div class="logo-div">
             <!-- Logo SVG -->
-            <img id="worldLogo" src="./assets/icons/world.png" alt="World Icon">
+            <img
+              id="worldLogo"
+              src="./assets/icons/world.png"
+              alt="World Icon"
+            />
           </div>
         </a>
 
@@ -42,11 +46,15 @@
       <p class="p-subheading m-3">Welcome to QuizWorld!</p>
       <div id="p-description-div" class="p-3 m-3">
         <p class="p-description">
-          Explore a world of quizzes that range from General Knowledge to Anime
-          & Manga! 
-          <p class="p-description">This app offers a fun and interactive way to test your
-          expertise or discover new interests with each engaging question!</p>
-          <p class="p-description">Embark on your quiz journey today!</p>
+          Explore a world of quizzes, from
+          <strong>General Knowledge to Anime & Manga!</strong>
+        </p>
+        <p class="p-description">
+          Challenge yourself with fun and interactive questions, test your
+          expertise, or discover new interests.
+        </p>
+        <p class="p-description">
+          <em>Start your quiz journey today!</em>
         </p>
       </div>
       <button class="btn m-3" id="startButtonLanding">PLAY!</button>
@@ -54,88 +62,93 @@
     <!-- Quiz Section -->
     <div class="container mt-4 hidden" id="quizSection">
       <div class="logo-div m-3">
-
-
         <a class="logo-link" href="index.html">
           <div class="logo-div">
             <!-- Logo SVG -->
-            <img id="worldQuizLogo" src="./assets/icons/world.png" alt="World Icon">
+            <img
+              id="worldQuizLogo"
+              src="./assets/icons/world.png"
+              alt="World Icon"
+            />
           </div>
         </a>
         <h1 class="display-1">uizWorld</h1>
       </div>
- <!-- Category Dropdown -->
- <div class="form-group" id="categoryContainer">
-  <img class="mb-3 me-1" src="./assets/icons/book.svg" alt="Book Icon">
+      <!-- Category Dropdown -->
+      <div class="form-group" id="categoryContainer">
+        <img class="mb-3 me-1" src="./assets/icons/book.svg" alt="Book Icon" />
 
-  <label for="category">Select Category:</label>
-  <select class="form-control" id="category">
-    <option value="any" selected>--Any Category--</option>
-    <option value="9">General Knowledge</option>
-    <option value="10">Books</option>
-    <option value="12">Music</option>
-    <option value="13">Musicals & Theatre</option>
-    <option value="14">Movies</option>
-    <option value="15">Video Games</option>
-    <option value="16">Board Games</option>
-    <option value="17">Science & Nature</option>
-    <option value="18">Computers</option>
-    <option value="19">Mathematics</option>
-    <option value="20">Mythology</option>
-    <option value="21">Sports</option>
-    <option value="22">Geography</option>
-    <option value="23">History</option>
-    <option value="24">Politics</option>
-    <option value="25">Art</option>
-    <option value="26">Celebrities</option>
-    <option value="27">Animals</option>
-    <option value="28">Vehicles</option>
-    <option value="29">Comics</option>
-    <option value="30">Gadgets</option>
-    <option value="31">Anime & Manga</option>
-    <option value="32">Cartoons & Animations</option>
-  </select>
-</div>
+        <label for="category">Select Category:</label>
+        <select class="form-control" id="category">
+          <option value="any" selected>--Any Category--</option>
+          <option value="9">General Knowledge</option>
+          <option value="10">Books</option>
+          <option value="12">Music</option>
+          <option value="13">Musicals & Theatre</option>
+          <option value="14">Movies</option>
+          <option value="15">Video Games</option>
+          <option value="16">Board Games</option>
+          <option value="17">Science & Nature</option>
+          <option value="18">Computers</option>
+          <option value="19">Mathematics</option>
+          <option value="20">Mythology</option>
+          <option value="21">Sports</option>
+          <option value="22">Geography</option>
+          <option value="23">History</option>
+          <option value="24">Politics</option>
+          <option value="25">Art</option>
+          <option value="26">Celebrities</option>
+          <option value="27">Animals</option>
+          <option value="28">Vehicles</option>
+          <option value="29">Comics</option>
+          <option value="30">Gadgets</option>
+          <option value="31">Anime & Manga</option>
+          <option value="32">Cartoons & Animations</option>
+        </select>
+      </div>
 
-<!-- Difficulty Dropdown -->
-<div class="form-group" id="difficultyContainer">
-  <img class="mb-3 me-1" src="./assets/icons/speedometer.svg" alt="Speedometer Icon" >
-  <label for="difficulty">Select Difficulty:</label>
-  <select class="form-control" id="difficulty">
-    <option value="any" selected >--Any Difficulty--</option>
-    <option value="easy">Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
-  </select>
-</div>
-    <!-- Start and Play Again Buttons -->
+      <!-- Difficulty Dropdown -->
+      <div class="form-group" id="difficultyContainer">
+        <img
+          class="mb-3 me-1"
+          src="./assets/icons/speedometer.svg"
+          alt="Speedometer Icon"
+        />
+        <label for="difficulty">Select Difficulty:</label>
+        <select class="form-control" id="difficulty">
+          <option value="any" selected>--Any Difficulty--</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <!-- Start and Play Again Buttons -->
       <button class="btn btn-primary" id="startButton">Start Game</button>
-      <button class="btn btn-primary" id="playAgainButton" style="display: none">Play Again</button>
-        <!-- Loader -->
+      <button
+        class="btn btn-primary"
+        id="playAgainButton"
+        style="display: none"
+      >
+        Play Again
+      </button>
+      <!-- Loader -->
       <div id="loader" class="hidden m-3">
         <p id="loader-p" class="m-3">Loading...</p>
-        <img src="./assets/icons/spinner.svg" alt="Loading Animation">
+        <img src="./assets/icons/spinner.svg" alt="Loading Animation" />
       </div>
-          <!-- Quiz Container, Progress Bar, and Quit Button -->
+      <!-- Quiz Container, Progress Bar, and Quit Button -->
       <div id="quizContainer" class="mt-3"></div>
-      <progress
-        id="progressBar"
-        class="mt-3"
-        max="10"
-        value="0"
-  
-      ></progress>
+      <progress id="progressBar" class="mt-3" max="10" value="0"></progress>
       <button class="btn btn-danger mt-3" id="quitButton">Quit</button>
     </div>
-      <!-- External Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-<script src="scripts/handlers.js"></script>
-<script  src="scripts/utilities.js"></script>
-<script src="scripts/questions.js"></script>
-<script src="scripts/api.js"></script>
-<script src="scripts/ui.js"></script>
-<script src="scripts/game.js"></script>
-    <script  src="quiz.js"></script>
-
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="scripts/handlers.js"></script>
+    <script src="scripts/utilities.js"></script>
+    <script src="scripts/questions.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="quiz.js"></script>
   </body>
 </html>
