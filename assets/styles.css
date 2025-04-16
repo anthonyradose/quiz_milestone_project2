@@ -11,7 +11,6 @@ h1 {
 }
 /* Landing Page Styles */
 #landingPage {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -225,21 +224,24 @@ label {
 }
 
 /* Media Queries */
+@media (min-width: 375px) {
+  #landingPage {
+    height: 90vh;
+  }
+}
 @media (max-width: 576px) {
   #categoryContainer,
   #difficultyContainer {
     min-width: unset;
   }
-  #worldLogo, #worldQuizLogo{
+  #worldLogo,
+  #worldQuizLogo {
     height: 100px !important;
     width: 100px !important;
   }
 }
 
 @media screen and (max-width: 320px) and (max-height: 480px) {
-  #landingPage {
-    height: unset;
-  }
   #categoryContainer,
   #difficultyContainer {
     min-width: unset;
@@ -250,16 +252,15 @@ label {
   #quizSection {
     height: unset;
   }
-
 }
 #p-description-div {
   background: rgba(60, 75, 95, 0.9);
-  color: #fff; 
+  color: #fff;
   padding: 20px;
-  border-radius: 12px; 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   line-height: 1.6;
-  max-width: 600px; 
+  max-width: 600px;
   text-align: center;
 }
 
