@@ -1,3 +1,5 @@
+import { categoryContainer, difficultyContainer, startButton, loader, quizContainer, worldQuizLogo, quitButton, progressBar } from "../quiz.js";
+
 /**
  * Hides the start elements on the UI, including category container, difficulty container, and start button.
  */
@@ -33,3 +35,5 @@ function initializeUIForQuestion() {
   worldQuizLogo.style.height = "100px";
   worldQuizLogo.style.width = "100px";
 }
+
+export { hideStartElements, displayLoader, initializeUIForQuestion };

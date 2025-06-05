@@ -1,3 +1,8 @@
+import { isAnsweringAllowed, questions, currentQuestionIndex, progressBar, quizContainer } from "../quiz.js";
+import { initializeUIForQuestion } from "./ui.js";
+import { handleAnswer } from "./handlers.js";
+import { shuffleArray, capitalizeFirstLetter } from "./utilities.js";
+
 /**
  * Displays a new question on the UI, initializing the UI components for the question.
  */
@@ -89,3 +94,5 @@ function createAnswerListHTML(answers) {
     })
     .join("");
 }
+
+export { displayQuestion, createQuestionElement, createCategoryDifficultyDiv, replaceQuestionMarkWithSVG, createAnswerListHTML };

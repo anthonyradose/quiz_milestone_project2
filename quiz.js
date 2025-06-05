@@ -1,3 +1,5 @@
+import { startGame, quitGame} from "./modules/game.js";
+
 /* globals Choices */
 /**
  * Initializes Choices.js dropdown for category selection.
@@ -82,7 +84,6 @@ const categoryContainer = document.getElementById("categoryContainer");
 const difficultyContainer = document.getElementById("difficultyContainer");
 const worldQuizLogo = document.getElementById("worldQuizLogo");
 const errorDiv = document.getElementById("error-message");
-const newErrorDiv = document.createElement("div");
 // Event Listeners:
 startButtonLanding.addEventListener("click", () => {
   landingPage.style.display = "none";
@@ -98,24 +99,68 @@ progressBar.style.display = "none";
  * Initializes the game state.
  */
 function initializeGameState() {
-  currentQuestionIndex = 0;
-  questions = null;
-  userScore = 0;
-  progressBar.value = 0;
-  isAnsweringAllowed = false;
-  startButton.style.display = "block";
-  categoryContainer.style.display = "block";
-  difficultyContainer.style.display = "block";
-  categorySelect.value = "any";
-  difficultySelect.value = "any";
-  categoryDropdown.setChoiceByValue("any");
-  difficultyDropdown.setChoiceByValue("any");
-  categorySelect.disabled = false;
-  difficultySelect.disabled = false;
-  playAgainButton.style.display = "none";
-  quitButton.style.display = "none";
-  quizContainer.innerHTML = "";
-  quizContainer.style.display = "none";
-  worldQuizLogo.style.height = "150px";
-  worldQuizLogo.style.width = "150px";
+    // Reset state variables
+    updateQuestions([]);
+    updateQuestionIndex(0);
+    updateUserScore(0);
+    updateAnsweringAllowed(true);
+    
+    // Reset UI elements
+    progressBar.value = 0;
+    startButton.style.display = "block";
+    categoryContainer.style.display = "block";
+    difficultyContainer.style.display = "block";
+    categorySelect.value = "any";
+    difficultySelect.value = "any";
+    categoryDropdown.setChoiceByValue("any");
+    difficultyDropdown.setChoiceByValue("any");
+    categorySelect.disabled = false;
+    difficultySelect.disabled = false;
+    playAgainButton.style.display = "none";
+    quitButton.style.display = "none";
+    quizContainer.innerHTML = "";
+    quizContainer.style.display = "none";
+    worldQuizLogo.style.height = "150px";
+    worldQuizLogo.style.width = "150px";
 }
+
+function updateQuestions(newQuestions) {
+  questions = newQuestions;
+}
+
+function updateAnsweringAllowed(value) {
+  isAnsweringAllowed = value;
+}
+
+function updateQuestionIndex(value) {
+  currentQuestionIndex = value;
+}
+
+function updateUserScore(value) {
+  userScore = value;
+}
+
+export {
+    isAnsweringAllowed,
+    questions,
+    currentQuestionIndex,
+    userScore,
+    quitButton,
+    quizContainer,
+    updateQuestions,
+    updateQuestionIndex,
+    updateUserScore,
+    updateAnsweringAllowed,
+    initializeGameState,
+    categoryContainer,
+    difficultyContainer,
+    startButton,
+    loader,
+    worldQuizLogo,
+    progressBar,
+    categorySelect,
+    difficultySelect,
+    quizSection,
+    playAgainButton,
+    errorDiv
+};

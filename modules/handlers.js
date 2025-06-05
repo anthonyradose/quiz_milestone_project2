@@ -1,3 +1,9 @@
+import { isAnsweringAllowed, questions, currentQuestionIndex, userScore, quitButton, quizContainer, updateQuestionIndex, updateUserScore, errorDiv } from "../quiz.js";
+import { endGame } from "./game.js";
+import { displayQuestion } from "./questions.js";
+
+const newErrorDiv = document.createElement("div");
+
 /**
  * Handles user-selected answers, checks correctness, and updates the UI with feedback.
  * @param {Event} event - The click event on an answer option.
@@ -21,7 +27,7 @@ function handleAnswer(event) {
 
     // Update the user's score
     if (isCorrect) {
-      userScore++;
+      updateUserScore(userScore + 1);
     }
   }
 }
@@ -49,7 +55,7 @@ function displayFeedback(message) {
     feedbackElement.remove();
 
     // Move to the next question or end the quiz after removing the feedback
-    currentQuestionIndex++;
+    updateQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex < 10) {
       displayQuestion();
     } else {
@@ -70,3 +76,5 @@ function displayErrorMessage(message) {
   newErrorDiv.innerHTML = `<p class="m-0">${message}</p>`;
   document.body.appendChild(newErrorDiv);
 }
+
+export { handleAnswer, displayFeedback, displayErrorMessage };

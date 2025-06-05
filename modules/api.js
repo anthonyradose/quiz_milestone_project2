@@ -1,3 +1,8 @@
+import { displayErrorMessage } from "./handlers.js";
+import { displayLoader } from "./ui.js";
+import { displayQuestion } from "./questions.js";
+import { loader, quizSection, categorySelect, difficultySelect, questions, updateQuestions, updateAnsweringAllowed } from "../quiz.js";
+
 /**
  * Fetches questions from the specified API URL.
  *
@@ -29,10 +34,10 @@ function fetchQuestions(apiUrl, retryCount = 3, retryDelay = 1000) {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      questions = data.results;
+      updateQuestions(data.results);
 
       if (questions && questions.length > 0) {
-        isAnsweringAllowed = true; // Set answering flag to true after questions are loaded
+        updateAnsweringAllowed(true); // Set answering flag to true after questions are loaded
         displayQuestion();
       } else {
         console.error("No questions loaded.");
@@ -100,3 +105,5 @@ function buildApiUrlBasedOnSelection() {
     return "https://opentdb.com/api.php?amount=10";
   }
 }
+
+export { fetchQuestions, buildApiUrlBasedOnSelection };

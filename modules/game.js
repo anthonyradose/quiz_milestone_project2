@@ -1,3 +1,8 @@
+import { hideStartElements, displayLoader } from "./ui.js";
+import { buildApiUrlBasedOnSelection, fetchQuestions } from "./api.js";
+import { displayErrorMessage } from "./handlers.js";
+import { progressBar, quitButton, playAgainButton, quizContainer, initializeGameState, userScore } from "../quiz.js";
+
 /**
  * Starts the game by hiding start elements, displaying the loader,
  * building the API URL based on user selection, and fetching questions.
@@ -54,3 +59,5 @@ function endGame() {
   playAgainButton.style.display = "block";
   quitButton.style.display = "block";
 }
+
+export { startGame, quitGame, endGame };
